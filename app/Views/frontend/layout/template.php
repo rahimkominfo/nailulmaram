@@ -57,6 +57,20 @@
         .delay-300 {
             animation-delay: 300ms;
         }
+
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 60s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 overflow-x-hidden">
@@ -116,6 +130,35 @@
             </div>
         </div>
     </nav>
+
+    <?php
+    $kelompok = [
+        1 => ['H. Muh. Sadar', 'Hj. Nikma', 'Nasrullah', 'Ratnawati', 'Rustan', 'Niar', 'Nurlaela'],
+        2 => ['Djubirusman Madya', 'Sanusi Madya Mrzz', 'Muh. Arsyad Madya', 'H. Basri Nurdin', 'Muh. Ishak Nurdin', 'Abd. Rasid', 'Tarmadi'],
+        3 => ['Zulfadli B', 'Haliq Abdul Wahid BM', 'Nurtina', 'Sribulan', 'Muhammad Idris', 'Baharuddin', 'Hj. Farida'],
+        4 => ['Rosmawati Madya', 'H. Akbar', 'Affzaturrahman Akbar', 'Ilham Cokro', 'Muhdar', 'Syamsul Bahri', 'H. Safri'],
+        5 => ['H. Mappaselle', 'Muh. Amir', 'Hj. Maswiah', 'Sultan', 'Ratna HB', 'Abd. Muzakkir', 'Hj. Rohani'],
+        6 => ['Muh. Anis', 'Sudirman', 'Hj. Syamsiah Junaid', 'Muh. Arif', 'Nur Akhmad', 'H. Muh. Amir Siri', 'Munandar Muhti'],
+        7 => ['Maksum', 'Abd. Samad', 'Sukman', 'Fauziah Husain', 'Muh. Rezky Sakti Hidayat', 'Sabri Hidayat', 'Ambo Tang Rauf'],
+        8 => ['Munawirul Alma', 'Ridwan H. Junaid', 'Mustamin Bin Poto', 'Rahmatia H. P', 'Mappiare DG Maloga', 'Mustakim', 'Alimuddin Tahir'],
+        9 => ['Syamsuddin Daud']
+    ];
+
+    $running_text = "";
+    foreach ($kelompok as $no => $anggota) {
+        $running_text .= "<span class='font-bold text-green-700'>Kelompok $no:</span> " . implode(', ', $anggota) . " <span class='mx-4 text-gray-300'>|</span> ";
+    }
+    // Duplicate for seamless loop
+    $full_text = $running_text . $running_text;
+    ?>
+
+    <div class="bg-green-50 border-b border-green-100 overflow-hidden py-2">
+        <div class="whitespace-nowrap animate-marquee inline-block">
+            <span class="text-sm text-green-900 font-medium">
+                <?= $full_text ?>
+            </span>
+        </div>
+    </div>
 
     <?= $this->renderSection('content') ?>
 
