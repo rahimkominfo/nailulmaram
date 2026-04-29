@@ -113,9 +113,9 @@
                 5 => ['H. MAPPASELLE', 'MUH. AMIR', 'HJ. MASWIAH', 'SULTAN', 'RATNA HB', 'ABD. MUZAKKIR', 'HJ. ROHANI'],
                 6 => ['MUH. ANIS', 'SUDIRMAN', 'HJ. SYAMSIAH JUNAID', 'MUH. ARIF', 'NUR AKHMAD', 'H. MUH. AMIR SIRI', 'MUNANDAR MUHTI'],
                 7 => ['MAKSUM', 'ABD. SAMAD', 'SUKMAN', 'FAUZIAH HUSAIN', 'MUH. REZKY SAKTI HIDAYAT', 'SABRI HIDAYAT', 'AMBO TANG RAUF'],
-                8 => ['Munawirul Alma', 'Ridwan H.Junaid', 'Mustamin Bin Poto', 'Rahmatia H.P', 'Mappiare DG Maloga', 'Mustakim', 'Alimuddin Tahir'],
-                9 => ['Syamsuddin Daud', '', '', '', '', '', ''],
-                10 => ['', '', '', '', '', '', ''],
+                8 => ['MUNAWIRUL ALMA', 'RIDWAN H.JUNAID', 'MUSTAMIN BIN POTO', 'RAHMATIA H.P', 'MAPPIARE DG MALOGA', 'MUSTAKIM', 'ALIMUDDIN TAHIR'],
+                9 => ['SYAMSUDDIN DAUD', 'HJ. FARIDA', 'AMILUDDIN', 'H. AMIRUDDIN AKIL', 'JAMALUDDIN H. KUNNU', 'HJ. HARSA', 'HJ. ANDI NURMIAH TENRO'],
+                10 => ['H. BADRIS SALAM', 'MUSTAKIM', 'MUHAMMAD ALWI', 'IMAM NURSANI, SE', 'AGUNG AYU GITAH, S.Farm', '', ''],
             ];
             ?>
 
