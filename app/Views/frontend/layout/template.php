@@ -142,7 +142,7 @@
         7 => ['Maksum', 'Abd. Samad', 'Sukman', 'Fauziah Husain', 'Muh. Rezky Sakti Hidayat', 'Sabri Hidayat', 'Ambo Tang Rauf'],
         8 => ['Munawirul Alma', 'Ridwan H. Junaid', 'Mustamin Bin Poto', 'Rahmatia H. P', 'Mappiare DG Maloga', 'Mustakim', 'Alimuddin Tahir'],
         9 => ['Syamsuddin Daud', 'Hj. Farida', 'Amiluddin', 'H. Amiruddin Akil', 'Jamaluddin H. Kunnu', 'Hj. Harsa', 'Hj. Andi Nurmiah Tenro'],
-        10 => ['H. Badris Salam', 'Mustakim', 'Muhammad Alwi', 'Imam Nursani, SE', 'Agung Ayu Gitah, S.Farm'],
+        10 => ['H. Badris Salam', 'Mustakim', 'Muhammad Alwi', 'Imam Nursani, SE', 'Agung Ayu Gitah, S.Farm', 'FAIZAL AMIN', 'NURFIRAH KASIM'],
     ];
 
     $running_text = "Daftar Nama-nama Peserta Qurban ";
