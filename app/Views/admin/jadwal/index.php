@@ -3,12 +3,12 @@
 <?= $this->section('content') ?>
     <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
         <h3 class="text-3xl font-black text-gray-800 tracking-tighter uppercase border-l-8 border-green-600 pl-6">Jadwal Sholat</h3>
-        <form action="<?= base_url('admin/jadwal/sync') ?>" method="post">
+<!--         <form action="<?= base_url('admin/jadwal/sync') ?>" method="post">
             <?= csrf_field() ?>
             <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-black py-4 px-8 rounded-2xl shadow-lg shadow-blue-200 transition duration-300 uppercase tracking-widest flex items-center">
                 <i class="fas fa-sync mr-3"></i> Sinkronisasi Bulan Ini
             </button>
-        </form>
+        </form> -->
     </div>
 
     <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
