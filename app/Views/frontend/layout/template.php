@@ -135,7 +135,7 @@
     $kelompok = [
         1 => ['H. Muh. Sadar', 'Hj. Nikma', 'Nasrullah', 'Ratnawati', 'Rustan', 'Niar', 'Nurlaela'],
         2 => ['Djubirusman Madya', 'Sanusi Madya Mrzz', 'Muh. Arsyad Madya', 'H. Basri Nurdin', 'Muh. Ishak Nurdin', 'Abd. Rasid', 'Tarmadi'],
-        3 => ['Zulfadli B', 'Haliq Abdul Wahid BM', 'Nurtina', 'Sribulan', 'Muhammad Idris', 'Baharuddin', 'Hj. Farida'],
+        3 => ['Zulfadli B', 'Haliq Abdul Walid BM', 'Nurtina', 'Sribulan', 'Muhammad Idris', 'Baharuddin', 'Hj. Farida'],
         4 => ['Rosmawati Madya', 'H. Akbar', 'Affzaturrahman Akbar', 'Ilham Cokro', 'Muhdar', 'Syamsul Bahri', 'H. Safri'],
         5 => ['H. Mappaselle', 'Muh. Amir', 'Hj. Maswiah', 'Sultan', 'Ratna HB', 'Abd. Muzakkir', 'Hj. Rohani'],
         6 => ['Muh. Anis', 'Sudirman', 'Hj. Syamsiah Junaid', 'Muh. Arif', 'Nur Akhmad', 'H. Muh. Amir Siri', 'Munandar Muhti'],
