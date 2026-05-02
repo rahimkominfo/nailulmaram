@@ -103,16 +103,16 @@
               <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php 
                 $harian = [
-                  ['name' => 'Muzawwir, S.Pd.I, M.Pd', 'role' => 'Ketua'],
-                  ['name' => 'H. Safri, B.Sc', 'role' => 'Wakil Ketua'],
-                  ['name' => 'Takdir Kahar, S.Pd, M.Pd', 'role' => 'Sekretaris'],
-                  ['name' => 'H. Basri Nurdin', 'role' => 'Bendahara'],
-                  ['name' => 'Abd. Samad', 'role' => 'Wakil Bendahara'],
+                  ['name' => 'Muzawwir, S.Pd.I, M.Pd', 'role' => 'Ketua', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                  ['name' => 'H. Safri, B.Sc', 'role' => 'Wakil Ketua', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                  ['name' => 'Takdir Kahar, S.Pd, M.Pd', 'role' => 'Sekretaris', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                  ['name' => 'H. Basri Nurdin', 'role' => 'Bendahara', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                  ['name' => 'Abd. Samad', 'role' => 'Wakil Bendahara', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
                 ];
                 foreach ($harian as $h): ?>
                 <div class="flex items-center gap-4">
                   <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold overflow-hidden flex-shrink-0">
-                    <img src="https://lh3.googleusercontent.com/a/default-user" class="w-full h-full object-cover" />
+                    <img src="<?= $h['image'] ?>" class="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h3 class="font-bold text-gray-900 text-sm leading-tight"><?= $h['name'] ?></h3>
@@ -129,19 +129,19 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
               <?php 
               $bidang = [
-                ['title' => 'Bidang Ibadah & Dakwah', 'sub' => 'Sub Bidang Dakwah & Hari Besar Islam', 'name' => 'Abduh Isra Madya', 'icon' => 'mosque'],
-                ['title' => 'Bidang Ibadah & Dakwah', 'sub' => 'Sub Imam Masjid Jami Nailul Maram', 'name' => 'Ust. Ishak Amir, S.Pd.I, M.Pd', 'icon' => 'mosque'],
-                ['title' => 'Bidang Pembangunan', 'sub' => null, 'name' => 'Djubirusman Madya', 'icon' => 'construction'],
-                ['title' => 'Bidang Sarana & Prasarana', 'sub' => null, 'name' => 'Sanusi Madya MRzz', 'icon' => 'inventory_2'],
-                ['title' => 'Bidang Humas & IT', 'sub' => null, 'name' => 'Abdul Rahman', 'icon' => 'groups'],
-                ['title' => 'Bidang Pengawas LPQ', 'sub' => null, 'name' => 'Nasrullah', 'icon' => 'menu_book'],
-                ['title' => 'Bidang Remaja Masjid', 'sub' => null, 'name' => 'Sabri Hidayat', 'icon' => 'diversity_3'],
-                ['title' => 'Bidang Perpustakaan', 'sub' => null, 'name' => 'Zakaria Amiruddin Akil', 'icon' => 'local_library'],
-                ['title' => 'Bidang Dana', 'sub' => null, 'name' => 'H. Mappaselle', 'icon' => 'volunteer_activism'],
-                ['title' => 'Bidang Muslimah', 'sub' => 'Sub Bidang Kajian & Dakwah Muslimah', 'name' => 'Dra. Hj. Haerati', 'icon' => 'face_4'],
-                ['title' => 'Bidang Muslimah', 'sub' => 'Sub Bidang Kesehatan, Sosial & Ekonomi Muslimah', 'name' => 'Hj. Hilda Ismail, S.Pd, M.M.', 'icon' => 'face_4'],
-                ['title' => 'Bidang Muslimah', 'sub' => 'Sub Bidang Kreativitas & Keterampilan Muslimah', 'name' => 'Hj. Nurlina', 'icon' => 'face_4'],
-                ['title' => 'Bidang Keamanan', 'sub' => null, 'name' => 'AKP. Mukhsin Sirajuddin, S.Sos, M.Si', 'icon' => 'security'],
+                ['title' => 'Bidang Ibadah & Dakwah', 'sub' => 'Sub Bidang Dakwah & Hari Besar Islam', 'name' => 'Abduh Isra Madya', 'icon' => 'mosque', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Ibadah & Dakwah', 'sub' => 'Sub Imam Masjid Jami Nailul Maram', 'name' => 'Ust. Ishak Amir, S.Pd.I, M.Pd', 'icon' => 'mosque', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Pembangunan', 'sub' => null, 'name' => 'Djubirusman Madya', 'icon' => 'construction', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Sarana & Prasarana', 'sub' => null, 'name' => 'Sanusi Madya MRzz', 'icon' => 'inventory_2', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Humas & IT', 'sub' => null, 'name' => 'Abdul Rahman', 'icon' => 'groups', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Pengawas LPQ', 'sub' => null, 'name' => 'Nasrullah', 'icon' => 'menu_book', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Remaja Masjid', 'sub' => null, 'name' => 'Sabri Hidayat', 'icon' => 'diversity_3', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Perpustakaan', 'sub' => null, 'name' => 'Zakaria Amiruddin Akil', 'icon' => 'local_library', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Dana', 'sub' => null, 'name' => 'H. Mappaselle', 'icon' => 'volunteer_activism', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Muslimah', 'sub' => 'Sub Bidang Kajian & Dakwah Muslimah', 'name' => 'Dra. Hj. Haerati', 'icon' => 'face_4', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Muslimah', 'sub' => 'Sub Bidang Kesehatan, Sosial & Ekonomi Muslimah', 'name' => 'Hj. Hilda Ismail, S.Pd, M.M.', 'icon' => 'face_4', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Muslimah', 'sub' => 'Sub Bidang Kreativitas & Keterampilan Muslimah', 'name' => 'Hj. Nurlina', 'icon' => 'face_4', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
+                ['title' => 'Bidang Keamanan', 'sub' => null, 'name' => 'AKP. Mukhsin Sirajuddin, S.Sos, M.Si', 'icon' => 'security', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
               ];
 
               foreach ($bidang as $b): ?>
@@ -158,7 +158,7 @@
                 <div class="p-4">
                   <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-gray-100 flex-shrink-0 overflow-hidden">
-                      <img src="https://lh3.googleusercontent.com/a/default-user" class="w-full h-full object-cover">
+                      <img src="<?= $b['image'] ?>" class="w-full h-full object-cover">
                     </div>
                     <div>
                       <p class="text-[11px] font-bold text-gray-800 leading-tight"><?= $b['name'] ?></p>
