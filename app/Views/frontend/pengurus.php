@@ -129,7 +129,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
               <?php 
               $bidang = [
-                ['title' => 'Bidang Ibadah & Dakwah', 'sub' => 'Sub Bidang Dakwah & PHBI', 'name' => 'Abduh Isra Madya', 'icon' => 'mosque'],
+                ['title' => 'Bidang Ibadah & Dakwah', 'sub' => 'Sub Bidang Dakwah & Hari Besar Islam', 'name' => 'Abduh Isra Madya', 'icon' => 'mosque'],
                 ['title' => 'Bidang Ibadah & Dakwah', 'sub' => 'Sub Imam Masjid Jami Nailul Maram', 'name' => 'Ust. Ishak Amir, S.Pd.I, M.Pd', 'icon' => 'mosque'],
                 ['title' => 'Bidang Pembangunan', 'sub' => null, 'name' => 'Djubirusman Madya', 'icon' => 'construction'],
                 ['title' => 'Bidang Sarana & Prasarana', 'sub' => null, 'name' => 'Sanusi Madya MRzz', 'icon' => 'inventory_2'],
