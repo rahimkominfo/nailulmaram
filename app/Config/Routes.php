@@ -24,6 +24,13 @@ $routes->get('quran/(:num)', 'Quran::surah/$1');
 $routes->get('galeri', 'Galeri::index');
 $routes->get('galeri/album/(:num)', 'Galeri::album/$1');
 
+// Public Aduan
+$routes->get('aduan', 'Aduan::index');
+$routes->get('aduan/buat', 'Aduan::buat');
+$routes->get('aduan/berhasil', 'Aduan::berhasil');
+$routes->get('aduan/detail', 'Aduan::detail');
+$routes->get('aduan/lacak', 'Aduan::lacak');
+
 // Admin Auth
 $routes->get('admin/login', 'Admin\Auth::login');
 $routes->post('admin/login/attempt', 'Admin\Auth::attemptLogin');
@@ -88,4 +95,8 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('flayer/edit/(:num)', 'Admin\Flayer::edit/$1');
     $routes->post('flayer/update/(:num)', 'Admin\Flayer::update/$1');
     $routes->get('flayer/delete/(:num)', 'Admin\Flayer::delete/$1');
+
+    // Modul Aduan
+    $routes->get('aduan', 'Admin\Aduan::index');
+    $routes->get('aduan/detail/(:num)', 'Admin\Aduan::detail/$1');
 });

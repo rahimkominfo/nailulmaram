@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Aduan ADU-20260506-001 — Masjid Jami Nailul Maram</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { primary:{50:'#ECFDF5',100:'#D1FAE5',500:'#10B981',700:'#047857',900:'#064E3B'}, gold:{100:'#FDF6E3',500:'#D4A843'} },
+        fontFamily: { heading:['"Plus Jakarta Sans"','sans-serif'], body:['Inter','sans-serif'], mono:['"JetBrains Mono"','monospace'] }
+      }}
+    }
+    </script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="font-body bg-gray-50 text-gray-800 antialiased">
+
+    <!-- BREADCRUMB -->
+    <div class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="flex items-center gap-2 text-sm text-gray-500">
+                <a href="../index.html" class="hover:text-primary-700 transition"><i class="fas fa-home text-xs"></i></a>
+                <i class="fas fa-chevron-right text-[0.6rem] text-gray-300"></i>
+                <a href="lacak.html" class="hover:text-primary-700 transition">Lacak Aduan</a>
+                <i class="fas fa-chevron-right text-[0.6rem] text-gray-300"></i>
+                <span class="text-gray-800 font-medium font-mono text-xs">ADU-20260506-001</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- DETAIL CONTENT -->
+    <section class="py-8 md:py-12">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+            <!-- Header Card -->
+            <div class="card-static p-6 mb-6 animate-fade-in-up">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">Kode Tiket</p>
+                        <h1 class="font-mono text-xl font-bold text-primary-900 tracking-wider">ADU-20260506-001</h1>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="badge badge-process">
+                            <span class="badge-dot"></span>
+                            Diproses
+                        </span>
+                        <button onclick="copyTicketCode('ADU-20260506-001')" class="btn btn-sm btn-outline" style="padding:0.35rem 0.75rem;font-size:0.75rem">
+                            <i class="fas fa-copy"></i> Salin
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="card-static p-6 mb-6 animate-fade-in-up delay-200">
+                <h2 class="font-heading font-bold text-base text-gray-900 mb-5 flex items-center gap-2">
+                    <i class="fas fa-timeline text-primary-500"></i> Timeline Status
+                </h2>
+                <div class="timeline">
+                    <div class="timeline-item animate-fade-in-left delay-300">
+                        <div class="timeline-dot active"></div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">Aduan diterima</p>
+                            <p class="text-xs text-gray-400 mt-0.5"><i class="far fa-clock mr-1"></i>06 Mei 2026, 10:00 WITA</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-fade-in-left delay-400">
+                        <div class="timeline-dot active"></div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800">Dibaca oleh Bidang Sarana & Prasarana</p>
+                            <p class="text-xs text-gray-400 mt-0.5"><i class="far fa-clock mr-1"></i>06 Mei 2026, 14:30 WITA</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-fade-in-left delay-500">
+                        <div class="timeline-dot active" style="border-color:var(--status-process);background:var(--status-process);box-shadow:0 0 0 4px rgba(59,130,246,0.2)"></div>
+                        <div>
+                            <p class="text-sm font-semibold text-blue-700">Sedang diproses</p>
+                            <p class="text-xs text-gray-400 mt-0.5"><i class="far fa-clock mr-1"></i>06 Mei 2026, 15:00 WITA</p>
+                            <p class="text-sm text-gray-500 mt-1">Pengurus sedang menindaklanjuti laporan Anda.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item animate-fade-in-left delay-600">
+                        <div class="timeline-dot pending"></div>
+                        <div>
+                            <p class="text-sm text-gray-400">Menunggu penyelesaian...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail Aduan -->
+            <div class="card-static p-6 mb-6 animate-fade-in-up delay-300">
+                <h2 class="font-heading font-bold text-base text-gray-900 mb-5 flex items-center gap-2">
+                    <i class="fas fa-file-lines text-primary-500"></i> Detail Aduan
+                </h2>
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">Tujuan</p>
+                            <p class="text-sm font-semibold text-gray-800"><i class="fas fa-wrench text-primary-500 mr-1.5"></i>Bidang Sarana & Prasarana</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">Pengirim</p>
+                            <p class="text-sm font-semibold text-gray-800"><i class="fas fa-user text-primary-500 mr-1.5"></i>Ahmad Fauzi</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">Waktu Kirim</p>
+                            <p class="text-sm text-gray-700">06 Mei 2026, 10:00 WITA</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">Visibilitas</p>
+                            <p class="text-sm text-gray-700"><i class="fas fa-lock text-gray-400 mr-1"></i>Privat</p>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100">
+                        <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">Subjek</p>
+                        <p class="text-base font-semibold text-gray-900">Keran air wudhu rusak di sisi kanan</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100">
+                        <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-1">Isi Aduan</p>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            Assalamu'alaikum. Saya ingin melaporkan bahwa keran air wudhu di sisi kanan masjid (keran nomor 3 dan 4 dari pintu masuk) sudah rusak sejak kurang lebih 2 minggu yang lalu. Air terus menetes meskipun keran sudah ditutup. Hal ini menyebabkan pemborosan air dan lantai menjadi licin. Mohon untuk segera diperbaiki. Terima kasih atas perhatiannya.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100">
+                        <p class="text-xs text-gray-400 font-medium uppercase tracking-wider mb-2">Lampiran</p>
+                        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100 w-fit">
+                            <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden">
+                                <i class="fas fa-image text-gray-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-700">foto_keran_rusak.jpg</p>
+                                <p class="text-xs text-gray-400">245 KB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Respons Pengurus -->
+            <div class="card-static p-6 animate-fade-in-up delay-400">
+                <h2 class="font-heading font-bold text-base text-gray-900 mb-5 flex items-center gap-2">
+                    <i class="fas fa-reply text-primary-500"></i> Respons Pengurus
+                </h2>
+                <div class="p-5 bg-gray-50 rounded-xl border border-dashed border-gray-200 text-center">
+                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-hourglass-half text-gray-400 text-lg animate-pulse-soft"></i>
+                    </div>
+                    <p class="text-sm text-gray-500 font-medium">Belum ada respons</p>
+                    <p class="text-xs text-gray-400 mt-1">Pengurus sedang menindaklanjuti aduan Anda. Anda akan melihat jawaban di sini setelah proses selesai.</p>
+                </div>
+            </div>
+
+            <!-- Back -->
+            <div class="mt-8 text-center">
+                <a href="lacak.html" class="text-sm text-primary-700 font-semibold hover:underline">
+                    <i class="fas fa-arrow-left mr-1"></i> Lacak aduan lain
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

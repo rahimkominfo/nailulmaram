@@ -20,7 +20,7 @@
 
     <link rel="icon" type="image/jpeg" href="<?= base_url('images/logo_masjid.jpeg') ?>">
     <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/fontawesome/css/all.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/fontawesome_/css/all.min.css') ?>">
     <?= $this->renderSection('extra_css') ?>
     <style>
         @keyframes kenburns {
@@ -100,6 +100,7 @@
                 <a href="<?= base_url('quran') ?>" class="<?= (current_url() == base_url('quran')) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Al-Qur'an</a>
                 <a href="<?= base_url('qurban') ?>" class="<?= (current_url() == base_url('qurban')) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Qurban</a>
                 <a href="<?= base_url('galeri') ?>" class="hover:text-green-600 transition">Galeri</a>
+                <a href="<?= base_url('aduan') ?>" class="<?= (strpos(current_url(), base_url('aduan')) !== false) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Aduan</a>
                 <a href="#kontak" class="hover:text-green-600 transition">Kontak</a>
             </div>
             <button id="menu-toggle" class="md:hidden text-2xl text-gray-600 focus:outline-none transition-transform duration-300">
@@ -126,6 +127,7 @@
                 <a href="<?= base_url('quran') ?>" class="<?= (current_url() == base_url('quran')) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Al-Qur'an</a>
                 <a href="<?= base_url('qurban') ?>" class="<?= (current_url() == base_url('qurban')) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Qurban</a>
                 <a href="<?= base_url('galeri') ?>" class="hover:text-green-600 transition">Galeri</a>
+                <a href="<?= base_url('aduan') ?>" class="<?= (strpos(current_url(), base_url('aduan')) !== false) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Aduan</a>
                 <a href="#kontak" class="hover:text-green-600 transition mobile-menu-link">Kontak</a>
             </div>
         </div>
