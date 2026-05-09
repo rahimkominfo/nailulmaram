@@ -98,5 +98,8 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
 
     // Modul Aduan
     $routes->get('aduan', 'Admin\Aduan::index');
+    $routes->get('aduan/search', 'Admin\Aduan::search');
     $routes->get('aduan/detail/(:num)', 'Admin\Aduan::detail/$1');
+    $routes->post('aduan/update-response', 'Admin\Aduan::updateResponse');
+    $routes->post('aduan/forward', 'Admin\Aduan::forward');
 });

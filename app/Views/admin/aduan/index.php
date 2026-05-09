@@ -113,21 +113,21 @@
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <div class="flex items-center gap-2 flex-1">
                 <div class="relative flex-1">
-                    <!-- <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i> -->
-                    <input type="text" class="form-input pl-9" placeholder="Cari tiket, subjek, atau pengirim...">
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" id="searchInput" class="form-input pl-9" placeholder="Cari tiket, subjek, atau pengirim...">
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <select class="form-select w-auto">
-                    <option>Semua Status</option>
-                    <option>Menunggu</option>
-                    <option>Diproses</option>
-                    <option>Diteruskan</option>
-                    <option>Selesai</option>
-                    <option>Ditolak</option>
+                <select id="statusFilter" class="form-select w-auto">
+                    <option value="all">Semua Status</option>
+                    <option value="Menunggu">Menunggu</option>
+                    <option value="Diproses">Diproses</option>
+                    <option value="Diteruskan">Diteruskan</option>
+                    <option value="Selesai">Selesai</option>
+                    <option value="Ditolak">Ditolak</option>
                 </select>
-                <select class="form-select w-auto">
-                    <option>Semua Bidang</option>
+                <select id="bidangFilter" class="form-select w-auto">
+                    <option value="all">Semua Bidang</option>
                     <?php foreach ($tujuan_list as $t): ?>
                         <option value="<?= $t['aduan_tujuan_id'] ?>"><?= $t['nama_aduan_tujuan'] ?></option>
                     <?php endforeach; ?>
@@ -137,7 +137,15 @@
     </div>
 
     <!-- Table -->
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden relative">
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="absolute inset-0 bg-white/50 backdrop-blur-[1px] z-10 flex items-center justify-center hidden">
+            <div class="flex flex-col items-center gap-2">
+                <div class="w-8 h-8 border-4 border-green-700 border-t-transparent rounded-full animate-spin"></div>
+                <span class="text-xs font-medium text-green-800">Memuat data...</span>
+            </div>
+        </div>
+
         <div class="overflow-x-auto">
             <table class="data-table">
                 <thead>
@@ -152,7 +160,7 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="aduanTableBody">
                     <?php if (empty($aduan)): ?>
                         <tr>
                             <td colspan="8" class="text-center py-10 text-gray-500">Tidak ada data aduan.</td>
@@ -197,15 +205,109 @@
         </div>
         <!-- Pagination -->
         <div class="flex items-center justify-between px-5 py-4 border-t border-gray-100">
-            <p class="text-xs text-gray-500">Menampilkan 1-6 dari 17 aduan</p>
-            <div class="flex items-center gap-1">
-                <button class="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center text-gray-400 text-xs hover:bg-gray-50"><i class="fas fa-chevron-left"></i></button>
-                <button class="w-8 h-8 rounded-lg bg-green-700 text-white flex items-center justify-center text-xs font-bold">1</button>
-                <button class="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center text-gray-600 text-xs hover:bg-gray-50 font-medium">2</button>
-                <button class="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center text-gray-600 text-xs hover:bg-gray-50 font-medium">3</button>
-                <button class="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center text-gray-400 text-xs hover:bg-gray-50"><i class="fas fa-chevron-right"></i></button>
-            </div>
+            <p id="paginationInfo" class="text-xs text-gray-500">Menampilkan <?= count($aduan) ?> aduan</p>
         </div>
     </div>
 </div>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const statusFilter = document.getElementById('statusFilter');
+        const bidangFilter = document.getElementById('bidangFilter');
+        const tableBody = document.getElementById('aduanTableBody');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const paginationInfo = document.getElementById('paginationInfo');
+
+        let debounceTimer;
+
+        const statusClasses = {
+            'Menunggu': 'badge-pending',
+            'Diproses': 'badge-process',
+            'Diteruskan': 'badge-forward',
+            'Selesai': 'badge-resolved',
+            'Ditolak': 'badge-rejected'
+        };
+
+        function fetchAduan() {
+            const keyword = searchInput.value;
+            const status = statusFilter.value;
+            const bidang = bidangFilter.value;
+
+            loadingOverlay.classList.remove('hidden');
+
+            const url = `<?= base_url('admin/aduan/search') ?>?keyword=${encodeURIComponent(keyword)}&status=${status}&bidang=${bidang}`;
+
+            fetch(url, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(res => {
+                if (res.status === 'success') {
+                    renderTable(res.data);
+                    paginationInfo.textContent = `Menampilkan ${res.count} aduan`;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                tableBody.innerHTML = `<tr><td colspan="8" class="text-center py-10 text-red-500">Terjadi kesalahan saat memuat data.</td></tr>`;
+            })
+            .finally(() => {
+                loadingOverlay.classList.add('hidden');
+            });
+        }
+
+        function renderTable(data) {
+            if (data.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="8" class="text-center py-10 text-gray-500">Data tidak ditemukan.</td></tr>`;
+                return;
+            }
+
+            let html = '';
+            data.forEach(item => {
+                const badgeClass = statusClasses[item.status_aduan] || 'badge-pending';
+                const anonimClass = !item.nama_pengirim ? 'italic text-gray-400' : '';
+                const namaPengirim = item.nama_pengirim || 'Anonim';
+
+                html += `
+                    <tr class="animate-fade-in">
+                        <td><input type="checkbox" class="w-4 h-4 rounded"></td>
+                        <td class="font-mono text-xs font-semibold text-green-700">${item.kode_tiket}</td>
+                        <td>
+                            <div class="flex items-center gap-2">
+                                <div class="w-7 h-7 bg-green-100 rounded-full flex items-center justify-center text-green-700 text-[0.6rem] font-bold">
+                                    ${item.initials}
+                                </div>
+                                <span class="text-sm ${anonimClass}">
+                                    ${namaPengirim}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="font-medium text-sm">${item.judul_aduan}</td>
+                        <td class="text-xs text-gray-500">${item.nama_aduan_tujuan}</td>
+                        <td>
+                            <span class="badge ${badgeClass}"><span class="badge-dot"></span>${item.status_aduan}</span>
+                        </td>
+                        <td class="text-xs text-gray-400">${item.waktu_dibuat_formatted}</td>
+                        <td><a href="${item.detail_url}" class="btn-outline"><i class="fas fa-eye"></i> Lihat</a></td>
+                    </tr>
+                `;
+            });
+            tableBody.innerHTML = html;
+        }
+
+        // Event Listeners with Debounce for search
+        searchInput.addEventListener('input', function() {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(fetchAduan, 500);
+        });
+
+        statusFilter.addEventListener('change', fetchAduan);
+        bidangFilter.addEventListener('change', fetchAduan);
+    });
+</script>
 <?= $this->endSection() ?>

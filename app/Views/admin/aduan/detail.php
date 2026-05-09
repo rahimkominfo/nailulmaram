@@ -72,7 +72,27 @@
 
 <?= $this->section('content') ?>
 <div class="animate-fade-in max-w-4xl mx-auto">
-    <!-- Header -->
+    <!-- Flash Messages -->
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl mb-6 flex items-center justify-between">
+            <div class="flex items-center">
+                <i class="fas fa-check-circle mr-2"></i>
+                <span><?= session()->getFlashdata('success') ?></span>
+            </div>
+            <button type="button" onclick="this.parentElement.remove()" class="text-green-700 hover:text-green-900"><i class="fas fa-times"></i></button>
+        </div>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mb-6 flex items-center justify-between">
+            <div class="flex items-center">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                <span><?= session()->getFlashdata('error') ?></span>
+            </div>
+            <button type="button" onclick="this.parentElement.remove()" class="text-red-700 hover:text-red-900"><i class="fas fa-times"></i></button>
+        </div>
+    <?php endif; ?>
+
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-6">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
@@ -80,14 +100,19 @@
                 <h1 class="font-mono text-xl font-bold text-green-900 tracking-wider"><?= $aduan['kode_tiket'] ?></h1>
             </div>
             <div class="flex items-center gap-3">
-                <label class="text-xs font-semibold text-gray-500 uppercase">Status:</label>
-                <select class="form-select py-1.5 text-sm font-semibold w-auto rounded-full pl-4 pr-10" id="statusSelect">
-                    <option value="Menunggu" <?= $aduan['status_aduan'] == 'Menunggu' ? 'selected' : '' ?>>⏳ Menunggu</option>
-                    <option value="Diproses" <?= $aduan['status_aduan'] == 'Diproses' ? 'selected' : '' ?>>🔄 Diproses</option>
-                    <option value="Diteruskan" <?= $aduan['status_aduan'] == 'Diteruskan' ? 'selected' : '' ?>>↗️ Diteruskan</option>
-                    <option value="Selesai" <?= $aduan['status_aduan'] == 'Selesai' ? 'selected' : '' ?>>✅ Selesai</option>
-                    <option value="Ditolak" <?= $aduan['status_aduan'] == 'Ditolak' ? 'selected' : '' ?>>❌ Ditolak</option>
-                </select>
+                <label class="text-xs font-semibold text-gray-500 uppercase">Status Saat Ini:</label>
+                <?php 
+                $statusIcons = [
+                    'Menunggu' => '⏳',
+                    'Diproses' => '🔄',
+                    'Diteruskan' => '↗️',
+                    'Selesai' => '✅',
+                    'Ditolak' => '❌'
+                ];
+                ?>
+                <span class="px-4 py-1.5 bg-gray-100 rounded-full text-sm font-bold text-gray-700">
+                    <?= $statusIcons[$aduan['status_aduan']] ?? '' ?> <?= $aduan['status_aduan'] ?>
+                </span>
             </div>
         </div>
     </div>
@@ -169,8 +194,8 @@
                     <i class="fas fa-lock text-amber-500"></i> Catatan Internal (Fitur Mendatang)
                 </h2>
                 <p class="text-xs text-gray-400 mb-3">Hanya terlihat oleh sesama pengurus.</p>
-                <textarea class="form-textarea text-sm" rows="3" placeholder="Tulis catatan internal..."></textarea>
-                <button class="btn btn-sm btn-outline mt-3 w-full" disabled>
+                <textarea class="form-textarea text-sm" rows="3" placeholder="Tulis catatan internal..." readonly></textarea>
+                <button type="button" class="btn btn-sm btn-outline mt-3 w-full opacity-50 cursor-not-allowed" disabled>
                     <i class="fas fa-save"></i> Simpan Catatan
                 </button>
             </div>
@@ -180,17 +205,21 @@
                 <h2 class="font-heading font-bold text-sm text-gray-900 mb-3 flex items-center gap-2">
                     <i class="fas fa-share text-violet-500"></i> Teruskan ke Bidang Lain
                 </h2>
-                <select class="form-select text-sm mb-3">
-                    <option disabled selected>Pilih bidang tujuan...</option>
-                    <?php foreach ($tujuan_list as $t): ?>
-                        <option value="<?= $t['aduan_tujuan_id'] ?>" <?= $t['aduan_tujuan_id'] == $aduan['aduan_tujuan_id'] ? 'disabled' : '' ?>>
-                            <?= $t['nama_aduan_tujuan'] ?> (<?= $t['nama_pengurus'] ?>)
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-                <button class="btn btn-sm w-full bg-violet-600 text-white hover:bg-violet-700">
-                    <i class="fas fa-share"></i> Teruskan
-                </button>
+                <form action="<?= base_url('admin/aduan/forward') ?>" method="POST" id="forwardForm">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="aduan_id" value="<?= $aduan['aduan_id'] ?>">
+                    <select name="aduan_tujuan_id" class="form-select text-sm mb-3" required>
+                        <option disabled selected value="">Pilih bidang tujuan...</option>
+                        <?php foreach ($tujuan_list as $t): ?>
+                            <option value="<?= $t['aduan_tujuan_id'] ?>" <?= $t['aduan_tujuan_id'] == $aduan['aduan_tujuan_id'] ? 'disabled' : '' ?>>
+                                <?= $t['nama_aduan_tujuan'] ?> (<?= $t['nama_pengurus'] ?>)
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <button type="submit" class="btn btn-sm w-full bg-violet-600 text-white hover:bg-violet-700">
+                        <i class="fas fa-share"></i> Teruskan
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -201,15 +230,83 @@
             <i class="fas fa-reply text-green-600"></i> Respons untuk Jamaah
         </h2>
         <p class="text-xs text-gray-400 mb-3">Jawaban ini akan terlihat oleh jamaah saat mereka melacak aduan.</p>
-        <textarea class="form-textarea text-sm" rows="4" placeholder="Tulis respons atau jawaban untuk jamaah..."><?= $aduan['tanggapan_pengurus'] ?></textarea>
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-4">
-            <button class="btn btn-primary flex-1">
-                <i class="fas fa-paper-plane"></i> Kirim Respons & Selesaikan
-            </button>
-            <a href="<?= base_url('admin/aduan') ?>" class="btn btn-outline text-center">
-                <i class="fas fa-arrow-left"></i> Kembali
-            </a>
-        </div>
+        
+        <form action="<?= base_url('admin/aduan/update-response') ?>" method="POST" id="responseForm">
+            <?= csrf_field() ?>
+            <input type="hidden" name="aduan_id" value="<?= $aduan['aduan_id'] ?>">
+            
+            <div class="mb-4">
+                <label class="block text-xs font-semibold text-gray-500 uppercase mb-2">Ubah Status Menjadi:</label>
+                <select class="form-select py-2 text-sm font-semibold w-full sm:w-64 rounded-lg" name="status_aduan" id="statusSelect">
+                    <option value="Menunggu" <?= $aduan['status_aduan'] == 'Menunggu' ? 'selected' : '' ?>>⏳ Menunggu</option>
+                    <option value="Diproses" <?= $aduan['status_aduan'] == 'Diproses' ? 'selected' : '' ?>>🔄 Diproses</option>
+                    <option value="Diteruskan" <?= $aduan['status_aduan'] == 'Diteruskan' ? 'selected' : '' ?>>↗️ Diteruskan</option>
+                    <option value="Selesai" <?= $aduan['status_aduan'] == 'Selesai' ? 'selected' : '' ?>>✅ Selesai</option>
+                    <option value="Ditolak" <?= $aduan['status_aduan'] == 'Ditolak' ? 'selected' : '' ?>>❌ Ditolak</option>
+                </select>
+            </div>
+
+            <textarea name="tanggapan_pengurus" id="tanggapanInput" class="form-textarea text-sm" rows="4" placeholder="Tulis respons atau jawaban untuk jamaah..." required><?= $aduan['tanggapan_pengurus'] ?></textarea>
+            
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-4">
+                <button type="submit" class="btn btn-primary flex-1" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Kirim Respons & Selesaikan
+                </button>
+                <a href="<?= base_url('admin/aduan') ?>" class="btn btn-outline text-center">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
+            </div>
+        </form>
     </div>
 </div>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const statusSelect = document.getElementById('statusSelect');
+        const tanggapanInput = document.getElementById('tanggapanInput');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Logic to automatically change status to 'Selesai' when writing response if still 'Menunggu'
+        tanggapanInput.addEventListener('input', function() {
+            if (this.value.trim().length > 10 && statusSelect.value === 'Menunggu') {
+                statusSelect.value = 'Selesai';
+                // Trigger animation/feedback
+                statusSelect.classList.add('ring-2', 'ring-green-500');
+                setTimeout(() => statusSelect.classList.remove('ring-2', 'ring-green-500'), 1000);
+            }
+        });
+
+        // Simple confirmation before submit
+        const responseForm = document.getElementById('responseForm');
+        responseForm.addEventListener('submit', function(e) {
+            const status = statusSelect.value;
+            if (status === 'Selesai' && tanggapanInput.value.trim() === '') {
+                e.preventDefault();
+                alert('Mohon berikan respons sebelum menyelesaikan aduan.');
+                tanggapanInput.focus();
+                return;
+            }
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner animate-spin"></i> Memproses...';
+            submitBtn.disabled = true;
+        });
+
+        // Forward form confirmation
+        const forwardForm = document.getElementById('forwardForm');
+        forwardForm.addEventListener('submit', function(e) {
+            const select = this.querySelector('select');
+            const selectedText = select.options[select.selectedIndex].text;
+            
+            if (!confirm(`Apakah Anda yakin ingin meneruskan aduan ini ke bidang: ${selectedText}?`)) {
+                e.preventDefault();
+            } else {
+                const btn = this.querySelector('button[type="submit"]');
+                btn.innerHTML = '<i class="fas fa-spinner animate-spin"></i> Meneruskan...';
+                btn.disabled = true;
+            }
+        });
+    });
+</script>
 <?= $this->endSection() ?>

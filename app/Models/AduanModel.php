@@ -50,4 +50,33 @@ class AduanModel extends Model
         $builder->orderBy('aduan.waktu_dibuat', 'DESC');
         return $builder->get()->getResultArray();
     }
+
+    /**
+     * Search and Filter Aduan
+     */
+    public function searchAduan($keyword = '', $status = '', $bidang = '')
+    {
+        $builder = $this->db->table($this->table);
+        $builder->select('aduan.*, aduan_tujuan.nama_aduan_tujuan');
+        $builder->join('aduan_tujuan', 'aduan_tujuan.aduan_tujuan_id = aduan.aduan_tujuan_id');
+
+        if (!empty($keyword)) {
+            $builder->groupStart()
+                    ->like('aduan.kode_tiket', $keyword)
+                    ->orLike('aduan.nama_pengirim', $keyword)
+                    ->orLike('aduan.judul_aduan', $keyword)
+                    ->groupEnd();
+        }
+
+        if (!empty($status) && $status !== 'all') {
+            $builder->where('aduan.status_aduan', $status);
+        }
+
+        if (!empty($bidang) && $bidang !== 'all') {
+            $builder->where('aduan.aduan_tujuan_id', $bidang);
+        }
+
+        $builder->orderBy('aduan.waktu_dibuat', 'DESC');
+        return $builder->get()->getResultArray();
+    }
 }
