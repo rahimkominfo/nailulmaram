@@ -19,7 +19,8 @@ class PengurusModel extends Model
         'jenis', 
         'bidang', 
         'sub_bidang', 
-        'ikon'
+        'ikon',
+        'no_hp'
     ];
 
     protected bool $allowEmptyInserts = false;

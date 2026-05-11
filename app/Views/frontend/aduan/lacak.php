@@ -25,6 +25,12 @@
             </div>
 
             <div class="card p-8 md:p-10 bg-white shadow-sm border border-gray-100 rounded-2xl">
+                <?php if (session()->getFlashdata('error')): ?>
+                    <div class="mb-6 p-4 bg-red-50 border border-red-100 text-red-700 text-sm rounded-xl flex items-center gap-3">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <?= session()->getFlashdata('error') ?>
+                    </div>
+                <?php endif; ?>
                 <form onsubmit="handleLacakAduan(event)">
                     <div class="mb-6">
                         <label class="block text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-3">Kode Tiket <span class="text-red-500">*</span></label>

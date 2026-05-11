@@ -84,21 +84,21 @@
                     <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mx-auto mb-3">
                         <i class="fas fa-inbox text-emerald-700 text-lg"></i>
                     </div>
-                    <div class="stat-number" data-count="125">0</div>
+                    <div class="stat-number" data-count="<?= $stats['total'] ?>">0</div>
                     <div class="stat-label text-xs uppercase tracking-wider font-bold">Total Aduan Masuk</div>
                 </div>
                 <div class="stat-card animate-fade-in-up delay-200">
                     <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mx-auto mb-3">
                         <i class="fas fa-check-circle text-green-600 text-lg"></i>
                     </div>
-                    <div class="stat-number" data-count="98">0</div>
+                    <div class="stat-number" data-count="<?= $stats['selesai'] ?>">0</div>
                     <div class="stat-label text-xs uppercase tracking-wider font-bold">Aduan Terselesaikan</div>
                 </div>
                 <div class="stat-card animate-fade-in-up delay-400">
                     <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3">
                         <i class="fas fa-clock text-blue-600 text-lg"></i>
                     </div>
-                    <div class="stat-number" data-count="2" data-suffix=" Hari">0</div>
+                    <div class="stat-number" data-count="<?= $stats['rata_rata'] ?: 1 ?>" data-suffix=" Hari">0</div>
                     <div class="stat-label text-xs uppercase tracking-wider font-bold">Rata-rata Respons</div>
                 </div>
             </div>
@@ -114,29 +114,15 @@
             </div>
 
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                <?php
-                $bidang = [
-                    ['icon' => 'fa-user-tie', 'label' => 'Ketua', 'sub' => 'Umum'],
-                    ['icon' => 'fa-clipboard-list', 'label' => 'Sekretaris', 'sub' => 'Administrasi'],
-                    ['icon' => 'fa-coins', 'label' => 'Bendahara', 'sub' => 'Keuangan'],
-                    ['icon' => 'fa-mosque', 'label' => 'Ibadah & Dakwah', 'sub' => 'Kegiatan keagamaan'],
-                    ['icon' => 'fa-building', 'label' => 'Pembangunan', 'sub' => 'Fisik & konstruksi'],
-                    ['icon' => 'fa-tools', 'label' => 'Sarana & Prasarana', 'sub' => 'Fasilitas masjid'],
-                    ['icon' => 'fa-broadcast-tower', 'label' => 'Humas & IT', 'sub' => 'Informasi publik'],
-                    ['icon' => 'fa-book-open', 'label' => 'Pengawas LPQ', 'sub' => 'Pendidikan Quran'],
-                    ['icon' => 'fa-users', 'label' => 'Remaja Masjid', 'sub' => 'Pembinaan pemuda'],
-                    ['icon' => 'fa-book-reader', 'label' => 'Perpustakaan', 'sub' => 'Pojok baca digital'],
-                    ['icon' => 'fa-hand-holding-dollar', 'label' => 'Dana', 'sub' => 'Donasi & infaq'],
-                    ['icon' => 'fa-venus', 'label' => 'Muslimah', 'sub' => 'Kegiatan akhwat'],
-                ];
-                foreach ($bidang as $b):
-                ?>
-                <a href="<?= base_url('aduan/buat') ?>" class="card p-5 text-center group">
+                <?php foreach ($tujuan as $t): ?>
+                <a href="<?= base_url('aduan/buat?tujuan=' . $t['aduan_tujuan_id']) ?>" class="card p-5 text-center group">
                     <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-emerald-100 transition">
-                        <i class="fas <?= $b['icon'] ?> text-emerald-700"></i>
+                        <span class="material-symbols-outlined text-emerald-700 text-3xl">
+                            <?= $t['ikon'] ?: 'help_outline' ?>
+                        </span>
                     </div>
-                    <h4 class="font-heading font-semibold text-sm text-gray-800"><?= $b['label'] ?></h4>
-                    <p class="text-xs text-gray-400 mt-1"><?= $b['sub'] ?></p>
+                    <h4 class="font-heading font-semibold text-sm text-gray-800"><?= $t['nama_aduan_tujuan'] ?></h4>
+                    <p class="text-xs text-gray-400 mt-1"><?= $t['dekripsi'] ?></p>
                 </a>
                 <?php endforeach; ?>
             </div>
@@ -159,6 +145,7 @@
 
 <?= $this->section('extra_css') ?>
 <link rel="stylesheet" href="<?= base_url('css/aduan.css') ?>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
     /* Add fonts locally if needed, or assume they are in template.php */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@600;700&display=swap');

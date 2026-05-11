@@ -27,6 +27,7 @@ $routes->get('galeri/album/(:num)', 'Galeri::album/$1');
 // Public Aduan
 $routes->get('aduan', 'Aduan::index');
 $routes->get('aduan/buat', 'Aduan::buat');
+$routes->post('aduan/simpan', 'Aduan::simpan');
 $routes->get('aduan/berhasil', 'Aduan::berhasil');
 $routes->get('aduan/detail', 'Aduan::detail');
 $routes->get('aduan/lacak', 'Aduan::lacak');

@@ -79,4 +79,33 @@ class AduanModel extends Model
         $builder->orderBy('aduan.waktu_dibuat', 'DESC');
         return $builder->get()->getResultArray();
     }
+
+    public function getStats()
+    {
+        $total = $this->countAll();
+        $selesai = $this->where('status_aduan', 'Selesai')->countAllResults();
+        
+        // Rata-rata respon (dalam hari)
+        // Gunakan select() manual untuk menghindari error parsing pada selectAvg()
+        $avgRespon = $this->select('AVG(DATEDIFF(waktu_diperbarui, waktu_dibuat)) as avg_days', false)
+                         ->where('status_aduan !=', 'Masuk')
+                         ->where('tanggapan_pengurus IS NOT NULL')
+                         ->where('tanggapan_pengurus !=', '')
+                         ->get()->getRowArray();
+
+        return [
+            'total' => $total,
+            'selesai' => $selesai,
+            'rata_rata' => round($avgRespon['avg_days'] ?? 0)
+        ];
+    }
+
+    public function getByTicket($ticket)
+    {
+        return $this->select('aduan.*, aduan_tujuan.nama_aduan_tujuan, aduan_tujuan.dekripsi, pengurus.nama as nama_pengurus, pengurus.ikon')
+                    ->join('aduan_tujuan', 'aduan_tujuan.aduan_tujuan_id = aduan.aduan_tujuan_id')
+                    ->join('pengurus', 'pengurus.pengurus_id = aduan_tujuan.pengurus_id', 'left')
+                    ->where('aduan.kode_tiket', $ticket)
+                    ->first();
+    }
 }

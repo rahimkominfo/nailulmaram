@@ -14,7 +14,7 @@ class AduanTujuanModel extends Model
 
     public function getWithPengurus()
     {
-        return $this->select('aduan_tujuan.*, pengurus.nama as nama_pengurus')
+        return $this->select('aduan_tujuan.*, pengurus.nama as nama_pengurus, pengurus.ikon, pengurus.bidang, pengurus.sub_bidang, pengurus.no_hp')
                     ->join('pengurus', 'pengurus.pengurus_id = aduan_tujuan.pengurus_id')
                     ->findAll();
     }
