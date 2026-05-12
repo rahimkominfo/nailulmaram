@@ -102,9 +102,10 @@ class AduanModel extends Model
 
     public function getByTicket($ticket)
     {
-        return $this->select('aduan.*, aduan_tujuan.nama_aduan_tujuan, aduan_tujuan.dekripsi, pengurus.nama as nama_pengurus, pengurus.ikon')
+        return $this->select('aduan.*, aduan_tujuan.nama_aduan_tujuan, aduan_tujuan.dekripsi, pengurus.nama as nama_pengurus, pengurus_bidang.ikon')
                     ->join('aduan_tujuan', 'aduan_tujuan.aduan_tujuan_id = aduan.aduan_tujuan_id')
                     ->join('pengurus', 'pengurus.pengurus_id = aduan_tujuan.pengurus_id', 'left')
+                    ->join('pengurus_bidang', 'pengurus_bidang.bidang_id = pengurus.bidang_id', 'left')
                     ->where('aduan.kode_tiket', $ticket)
                     ->first();
     }

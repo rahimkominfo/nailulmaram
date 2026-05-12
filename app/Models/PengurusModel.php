@@ -17,9 +17,8 @@ class PengurusModel extends Model
         'foto', 
         'jabatan', 
         'jenis', 
-        'bidang', 
-        'sub_bidang', 
-        'ikon',
+        'bidang_id', 
+        'sub_bidang_id', 
         'no_hp'
     ];
 

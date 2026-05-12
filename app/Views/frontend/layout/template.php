@@ -100,7 +100,7 @@
                 <a href="<?= base_url('quran') ?>" class="<?= (current_url() == base_url('quran')) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Al-Qur'an</a>
                 <a href="<?= base_url('qurban') ?>" class="<?= (current_url() == base_url('qurban')) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Qurban</a>
                 <a href="<?= base_url('galeri') ?>" class="hover:text-green-600 transition">Galeri</a>
-                <a href="<?= base_url('aduan') ?>" class="<?= (strpos(current_url(), base_url('aduan')) !== false) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Aduan</a>
+                <!-- <a href="<?= base_url('aduan') ?>" class="<?= (strpos(current_url(), base_url('aduan')) !== false) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Aduan</a> -->
                 <a href="#kontak" class="hover:text-green-600 transition">Kontak</a>
             </div>
             <button id="menu-toggle" class="md:hidden text-2xl text-gray-600 focus:outline-none transition-transform duration-300">
@@ -127,7 +127,7 @@
                 <a href="<?= base_url('quran') ?>" class="<?= (current_url() == base_url('quran')) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Al-Qur'an</a>
                 <a href="<?= base_url('qurban') ?>" class="<?= (current_url() == base_url('qurban')) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Qurban</a>
                 <a href="<?= base_url('galeri') ?>" class="hover:text-green-600 transition">Galeri</a>
-                <a href="<?= base_url('aduan') ?>" class="<?= (strpos(current_url(), base_url('aduan')) !== false) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Aduan</a>
+                <!-- <a href="<?= base_url('aduan') ?>" class="<?= (strpos(current_url(), base_url('aduan')) !== false) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Aduan</a> -->
                 <a href="#kontak" class="hover:text-green-600 transition mobile-menu-link">Kontak</a>
             </div>
         </div>
@@ -146,6 +146,8 @@
         9 => ['Syamsuddin Daud', 'Hj. Farida', 'Amiluddin', 'H. Amiruddin Akil', 'Jamaluddin H. Kunnu', 'Hj. Harsa', 'Hj. Andi Nurmiah Tenro'],
         10 => ['H. Badris Salam', 'Mustakim', 'Muhammad Alwi', 'Imam Nursani, SE', 'Agung Ayu Gitah, S.Farm', 'Faizal Amin', 'Nurfirah Kasim'],
         11 => ['H. Firdaus Syuaib', 'Ahriani AR.', 'Nurjannah', 'Dedy Muh. Arham', 'Munir M. Nur', 'Hasan Raja', 'Muchdar Ramadhan'],
+        12 => ['Achmad Fauzan Guntur, SE', 'Ardiansyah', 'Syukri', 'Iptu Herman Sudi', 'H. Kardin', 'Hj. Warda', 'Farida Johanis'],
+        13 => ['H. Nasir', 'Takdir Ridwan'],
     ];
 
     $running_text = "Daftar Nama-nama Peserta Qurban ";
