@@ -1,0 +1,180 @@
+/* ===== DESIGN SYSTEM — Sistem Aduan Jamaah (Scoped) ===== */
+
+/* --- CSS Custom Properties --- */
+.aduan-scope {
+  --ad-primary-900: #064E3B;
+  --ad-primary-700: #047857;
+  --ad-primary-500: #10B981;
+  --ad-primary-100: #D1FAE5;
+  --ad-primary-50: #ECFDF5;
+  --ad-gold-500: #D4A843;
+  --ad-gold-100: #FDF6E3;
+
+  --ad-status-pending: #F59E0B;
+  --ad-status-process: #3B82F6;
+  --ad-status-forward: #8B5CF6;
+  --ad-status-resolved: #10B981;
+  --ad-status-rejected: #EF4444;
+
+  --ad-shadow-card: 0 4px 24px rgba(0,0,0,0.06);
+  --ad-shadow-card-hover: 0 12px 36px rgba(0,0,0,0.12);
+  --ad-radius-card: 1rem;
+  --ad-radius-btn: 0.625rem;
+  --ad-transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Animations --- */
+@keyframes adFadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes adFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes adPulseSoft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+@keyframes adSpinLoader {
+  to { transform: rotate(360deg); }
+}
+
+.aduan-scope .animate-fade-in-up    { animation: adFadeInUp 0.7s ease-out both; }
+.aduan-scope .animate-fade-in       { animation: adFadeIn 0.5s ease-out both; }
+.aduan-scope .animate-pulse-soft    { animation: adPulseSoft 2s ease-in-out infinite; }
+
+.aduan-scope .delay-100 { animation-delay: 100ms; }
+.aduan-scope .delay-200 { animation-delay: 200ms; }
+.aduan-scope .delay-300 { animation-delay: 300ms; }
+.aduan-scope .delay-400 { animation-delay: 400ms; }
+.aduan-scope .delay-500 { animation-delay: 500ms; }
+.aduan-scope .delay-600 { animation-delay: 600ms; }
+
+/* --- Islamic Pattern Background (SVG) --- */
+.aduan-scope .bg-islamic-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* --- Cards --- */
+.aduan-scope .card {
+  background: #fff;
+  border-radius: var(--ad-radius-card);
+  box-shadow: var(--ad-shadow-card);
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: transform var(--ad-transition-base), box-shadow var(--ad-transition-base);
+}
+.aduan-scope .card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ad-shadow-card-hover);
+}
+
+/* --- Buttons --- */
+.aduan-scope .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--ad-radius-btn);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  border: none;
+  transition: all var(--ad-transition-base);
+  text-align: center;
+  line-height: 1;
+}
+.aduan-scope .btn-gold {
+  background: var(--ad-gold-500);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(212,168,67,0.3);
+}
+.aduan-scope .btn-gold:hover {
+  background: #c49a3a;
+  transform: translateY(-1px);
+}
+.aduan-scope .btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+.aduan-scope .btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-1px);
+}
+.aduan-scope .btn-loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+.aduan-scope .btn-loading::after {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: adSpinLoader 0.6s linear infinite;
+}
+
+/* --- Stat Card --- */
+.aduan-scope .stat-card {
+  background: #fff;
+  border-radius: var(--ad-radius-card);
+  padding: 1.5rem;
+  box-shadow: var(--ad-shadow-card);
+  border: 1px solid rgba(0,0,0,0.04);
+  text-align: center;
+}
+.aduan-scope .stat-number {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--ad-primary-900);
+  line-height: 1;
+}
+.aduan-scope .stat-label {
+  font-size: 0.875rem;
+  color: #6B7280;
+  margin-top: 0.25rem;
+}
+
+/* --- Step Cards --- */
+.aduan-scope .step-card {
+  position: relative;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.aduan-scope .step-number {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--ad-primary-700);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.125rem;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 12px rgba(4,120,87,0.3);
+}
+.aduan-scope .step-connector {
+  position: absolute;
+  top: 3.5rem;
+  right: -1rem;
+  color: #D1D5DB;
+  font-size: 1.25rem;
+}
+
+/* Utility overrides within scope */
+.aduan-scope .bg-primary-900 { background-color: var(--ad-primary-900); }
+.aduan-scope .bg-primary-50 { background-color: var(--ad-primary-50); }
+.aduan-scope .text-primary-700 { color: var(--ad-primary-700); }
+.aduan-scope .text-gold-500 { color: var(--ad-gold-500); }
+.aduan-scope .bg-gold-500 { background-color: var(--ad-gold-500); }
+
+@media (max-width: 640px) {
+  .aduan-scope .stat-number { font-size: 1.75rem; }
+}

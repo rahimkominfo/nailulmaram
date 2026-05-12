@@ -41,7 +41,25 @@
 
     <div class="max-w-screen-2xl mx-auto px-6 py-24 overflow-x-hidden md:overflow-x-auto">
         <div class="w-full md:min-w-[1000px] flex flex-col items-center gap-12 relative">
+          
+          <?php 
+          $pembina = array_filter($pengurus, fn($p) => $p['jenis'] === 'dewan' && strpos(strtolower($p['nama_bidang']), 'pembina') !== false);
+          $penasehat = array_filter($pengurus, fn($p) => $p['jenis'] === 'dewan' && strpos(strtolower($p['nama_bidang']), 'penasehat') !== false);
+          $harian = array_filter($pengurus, fn($p) => $p['jenis'] === 'harian');
+          
+          // Urutan custom untuk Pengurus Harian
+          $urutan_harian = ['Ketua', 'Wakil Ketua', 'Sekretaris', 'Bendahara', 'Wakil Bendahara'];
+          usort($harian, function($a, $b) use ($urutan_harian) {
+              $pos_a = array_search($a['jabatan'], $urutan_harian);
+              $pos_b = array_search($b['jabatan'], $urutan_harian);
+              return ($pos_a === false ? 99 : $pos_a) <=> ($pos_b === false ? 99 : $pos_b);
+          });
+
+          $bidang = array_filter($pengurus, fn($p) => $p['jenis'] === 'bidang');
+          ?>
+
           <!-- Pembina Level -->
+          <?php if (!empty($pembina)): ?>
           <div class="relative w-full flex justify-center">
             <div
               class="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-200 hover:scale-[1.02] border-l-[4px] border-amber-600 border-y border-r border-gray-100 w-full max-w-4xl relative z-10 overflow-hidden"
@@ -51,23 +69,28 @@
                 <h4 class="font-bold text-gray-900">Dewan Pembina</h4>
               </div>
               <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <?php foreach($pembina as $p): ?>
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-amber-700 font-bold flex-shrink-0">KK</div>
+                  <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-amber-700 font-bold flex-shrink-0 overflow-hidden">
+                    <?php if($p['foto']): ?>
+                      <img src="<?= $p['foto'] ?>" class="w-full h-full object-cover">
+                    <?php else: ?>
+                      <?= substr($p['nama'], 0, 1) ?>
+                    <?php endif; ?>
+                  </div>
                   <div>
-                    <span class="font-semibold text-gray-800">Kepala Kelurahan Lappa</span>
+                    <span class="font-semibold text-gray-800"><?= $p['nama'] ?></span>
+                    <p class="text-[10px] text-gray-500 uppercase font-bold"><?= $p['jabatan'] ?></p>
                   </div>
                 </div>
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-amber-700 font-bold flex-shrink-0">IK</div>
-                  <div>
-                    <span class="font-semibold text-gray-800">Imam Kelurahan Lappa</span>
-                  </div>
-                </div>
+                <?php endforeach; ?>
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Penasehat Level -->
+          <?php if (!empty($penasehat)): ?>
           <div class="relative mt-6 w-full flex justify-center">
             <div
               class="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-200 hover:scale-[1.02] border-l-[4px] border-amber-600 border-y border-r border-gray-100 w-full max-w-4xl relative z-10 overflow-hidden"
@@ -77,21 +100,28 @@
                 <h4 class="font-bold text-gray-900">Dewan Penasehat</h4>
               </div>
               <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <?php foreach(['H. Amiruddin Akil', 'Muh. Nasran HL.', 'Drs. H. Arifuddin Muin', 'H. Alwi Nammang'] as $name): ?>
+                <?php foreach($penasehat as $p): ?>
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-amber-700 font-bold flex-shrink-0">
-                    <?= substr($name, 0, 1) ?>
+                  <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-amber-700 font-bold flex-shrink-0 overflow-hidden">
+                    <?php if($p['foto']): ?>
+                      <img src="<?= $p['foto'] ?>" class="w-full h-full object-cover">
+                    <?php else: ?>
+                      <?= substr($p['nama'], 0, 1) ?>
+                    <?php endif; ?>
                   </div>
                   <div>
-                    <span class="font-semibold text-gray-800"><?= $name ?></span>
+                    <span class="font-semibold text-gray-800"><?= $p['nama'] ?></span>
+                    <p class="text-[10px] text-gray-500 uppercase font-bold"><?= $p['jabatan'] ?></p>
                   </div>
                 </div>
                 <?php endforeach; ?>
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Pengurus Harian Level -->
+          <?php if (!empty($harian)): ?>
           <div class="relative mt-6 z-10">
             <div
               class="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-200 hover:scale-[1.02] border-l-[4px] border-emerald-800 border-y border-r border-gray-100 w-full max-w-4xl relative bg-white overflow-hidden"
@@ -101,74 +131,76 @@
                 <h4 class="font-bold text-gray-900">Pengurus Harian</h4>
               </div>
               <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <?php 
-                $harian = [
-                  ['name' => 'Muzawwir, S.Pd.I, M.Pd', 'role' => 'Ketua', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                  ['name' => 'H. Safri, B.Sc', 'role' => 'Wakil Ketua', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                  ['name' => 'Takdir Kahar, S.Pd, M.Pd', 'role' => 'Sekretaris', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                  ['name' => 'H. Basri Nurdin', 'role' => 'Bendahara', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                  ['name' => 'Abd. Samad', 'role' => 'Wakil Bendahara', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ];
-                foreach ($harian as $h): ?>
+                <?php foreach ($harian as $p): ?>
                 <div class="flex items-center gap-4">
                   <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold overflow-hidden flex-shrink-0">
-                    <img src="<?= $h['image'] ?>" class="w-full h-full object-cover" />
+                    <img src="<?= $p['foto'] ?: 'https://lh3.googleusercontent.com/a/default-user' ?>" class="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <h3 class="font-bold text-gray-900 text-sm leading-tight"><?= $h['name'] ?></h3>
-                    <span class="text-[10px] text-gray-500 uppercase font-bold"><?= $h['role'] ?></span>
+                    <h3 class="font-bold text-gray-900 text-sm leading-tight"><?= $p['nama'] ?></h3>
+                    <span class="text-[10px] text-gray-500 uppercase font-bold"><?= $p['jabatan'] ?></span>
                   </div>
                 </div>
                 <?php endforeach; ?>
               </div>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Departments Level Grid -->
+          <?php if (!empty($bidang)): ?>
           <div class="relative w-full mt-6 pt-6 z-10">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
               <?php 
-              $bidang = [
-                ['title' => 'Bidang Ibadah & Dakwah', 'sub' => 'Sub Bidang Dakwah & Hari Besar Islam', 'name' => 'Abduh Isra Madya', 'icon' => 'mosque', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Ibadah & Dakwah', 'sub' => 'Sub Imam Masjid Jami Nailul Maram', 'name' => 'Ust. Ishak Amir, S.Pd.I, M.Pd', 'icon' => 'mosque', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Pembangunan', 'sub' => null, 'name' => 'Djubirusman Madya', 'icon' => 'construction', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Sarana & Prasarana', 'sub' => null, 'name' => 'Sanusi Madya MRzz', 'icon' => 'inventory_2', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Humas & IT', 'sub' => null, 'name' => 'Abdul Rahman', 'icon' => 'groups', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Pengawas LPQ', 'sub' => null, 'name' => 'Nasrullah', 'icon' => 'menu_book', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Remaja Masjid', 'sub' => null, 'name' => 'Sabri Hidayat', 'icon' => 'diversity_3', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Perpustakaan', 'sub' => null, 'name' => 'Zakaria Amiruddin Akil', 'icon' => 'local_library', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Dana', 'sub' => null, 'name' => 'H. Mappaselle', 'icon' => 'volunteer_activism', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Muslimah', 'sub' => 'Sub Bidang Kajian & Dakwah Muslimah', 'name' => 'Dra. Hj. Haerati', 'icon' => 'face_4', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Muslimah', 'sub' => 'Sub Bidang Kesehatan, Sosial & Ekonomi Muslimah', 'name' => 'Hj. Hilda Ismail, S.Pd, M.M.', 'icon' => 'face_4', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Muslimah', 'sub' => 'Sub Bidang Kreativitas & Keterampilan Muslimah', 'name' => 'Hj. Nurlina', 'icon' => 'face_4', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-                ['title' => 'Bidang Keamanan', 'sub' => null, 'name' => 'AKP. Mukhsin Sirajuddin, S.Sos, M.Si', 'icon' => 'security', 'image' => 'https://lh3.googleusercontent.com/a/default-user'],
-              ];
+              // Kelompokkan pengurus berdasarkan bidang_id DAN sub_bidang_id
+              $grouped_bidang = [];
+              foreach ($bidang as $p) {
+                  $key = $p['bidang_id'] . '_' . ($p['sub_bidang_id'] ?: 0);
+                  $grouped_bidang[$key][] = $p;
+              }
 
-              foreach ($bidang as $b): ?>
-              <div class="bg-white rounded-xl shadow-[0_2px_15px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)] transition-all border-l-[4px] border-emerald-600 border-y border-r border-gray-100 overflow-hidden">
+              foreach ($grouped_bidang as $key => $members): 
+                  $first = $members[0]; // Ambil info bidang dari anggota pertama
+
+                  // Urutan custom untuk Jabatan di Bidang/Sub-Bidang
+                  $urutan_jabatan = ['Koordinator', 'Wakil Koordinator', 'Anggota'];
+                  usort($members, function($a, $b) use ($urutan_jabatan) {
+                      $pos_a = array_search($a['jabatan'], $urutan_jabatan);
+                      $pos_b = array_search($b['jabatan'], $urutan_jabatan);
+                      return ($pos_a === false ? 99 : $pos_a) <=> ($pos_b === false ? 99 : $pos_b);
+                  });
+              ?>
+              <div class="bg-white rounded-xl shadow-[0_2px_15px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)] transition-all border-l-[4px] border-emerald-600 border-y border-r border-gray-100 overflow-hidden h-fit">
+                <!-- Header Card: Nama Bidang & Sub Bidang -->
                 <div class="flex items-center gap-2 p-3 border-b border-gray-50" style="background-color: #f0fdf4;">
-                  <span class="material-symbols-outlined text-emerald-700 text-sm flex-shrink-0"><?= $b['icon'] ?></span>
+                  <span class="material-symbols-outlined text-emerald-700 text-sm flex-shrink-0"><?= $first['ikon'] ?: 'groups' ?></span>
                   <div class="overflow-hidden">
-                    <h4 class="text-[12px] font-bold text-emerald-900 uppercase tracking-tight leading-tight truncate"><?= $b['title'] ?></h4>
-                    <?php if($b['sub']): ?>
-                      <p class="text-[10px] font-bold text-emerald-600 uppercase tracking-tight mt-0.5"><?= $b['sub'] ?></p>
+                    <h4 class="text-[12px] font-bold text-emerald-900 uppercase tracking-tight leading-tight truncate"><?= $first['nama_bidang'] ?></h4>
+                    <?php if($first['nama_sub_bidang']): ?>
+                      <p class="text-[10px] font-bold text-emerald-600 uppercase tracking-tight mt-0.5"><?= $first['nama_sub_bidang'] ?></p>
                     <?php endif; ?>
                   </div>
                 </div>
-                <div class="p-4">
+                
+                <!-- Body Card: Daftar Anggota -->
+                <div class="p-4 flex flex-col gap-4">
+                  <?php foreach ($members as $p): ?>
                   <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-gray-100 flex-shrink-0 overflow-hidden">
-                      <img src="<?= $b['image'] ?>" class="w-full h-full object-cover">
+                    <div class="w-12 h-12 rounded-full bg-gray-100 flex-shrink-0 overflow-hidden">
+                      <img src="<?= $p['foto'] ?: 'https://lh3.googleusercontent.com/a/default-user' ?>" class="w-full h-full object-cover">
                     </div>
-                    <div>
-                      <p class="text-[11px] font-bold text-gray-800 leading-tight"><?= $b['name'] ?></p>
+                    <div class="overflow-hidden">
+                      <p class="text-sm font-bold text-gray-800 leading-tight"><?= $p['nama'] ?></p>
+                      <p class="text-[10px] text-gray-500 uppercase font-bold"><?= $p['jabatan'] ?></p>
                     </div>
                   </div>
+                  <?php endforeach; ?>
                 </div>
               </div>
               <?php endforeach; ?>
             </div>
           </div>
+          <?php endif; ?>
         </div>
     </div>
 <?= $this->endSection() ?>

@@ -69,6 +69,10 @@
                         <i class="fas fa-layer-group w-5"></i>
                         <span>Flayer Depan</span>
                     </a>
+                    <a href="<?= base_url('admin/aduan') ?>" class="flex items-center space-x-3 p-3 rounded-xl transition <?= (strpos(current_url(), base_url('admin/aduan')) !== false) ? 'bg-green-700 font-bold' : 'hover:bg-green-800' ?>">
+                        <i class="fas fa-bullhorn w-5"></i>
+                        <span>Aduan</span>
+                    </a>
                     <?php endif; ?>
 
                     <?php if(session()->get('peran') === 'Admin'): ?>

@@ -29,6 +29,7 @@ class PenulisModel extends Model
 
     // Validation
     protected $validationRules      = [
+        'penulis_id'  => 'permit_empty|is_natural_no_zero',
         'username'    => 'required|alpha_numeric_space|min_length[3]|max_length[50]|is_unique[penulis.username,penulis_id,{penulis_id}]',
         'email'       => 'required|valid_email|max_length[100]|is_unique[penulis.email,penulis_id,{penulis_id}]',
         'password'    => 'required|min_length[8]',

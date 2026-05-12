@@ -70,6 +70,7 @@ class Penulis extends BaseController
         $password = $this->request->getPost('password');
         
         $data = [
+            'penulis_id'  => $id,
             'username'    => $this->request->getPost('username'),
             'email'       => $this->request->getPost('email'),
             'nama_publik' => $this->request->getPost('nama_publik'),
@@ -86,7 +87,9 @@ class Penulis extends BaseController
         }
 
         if (!$this->penulisModel->update($id, $data)) {
-            return redirect()->back()->withInput()->with('error', 'Gagal memperbarui penulis.');
+            $errors = $this->penulisModel->errors();
+            $errorMsg = 'Gagal memperbarui penulis. ' . implode(', ', $errors);
+            return redirect()->back()->withInput()->with('error', $errorMsg);
         }
 
         return redirect()->to('admin/penulis')->with('success', 'Data penulis berhasil diperbarui.');

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aduan Berhasil Dikirim — Masjid Jami Nailul Maram</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { primary:{50:'#ECFDF5',100:'#D1FAE5',500:'#10B981',700:'#047857',900:'#064E3B'}, gold:{100:'#FDF6E3',500:'#D4A843'} },
+        fontFamily: { heading:['"Plus Jakarta Sans"','sans-serif'], body:['Inter','sans-serif'], mono:['"JetBrains Mono"','monospace'] }
+      }}
+    }
+    </script>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        @keyframes successCheck {
+            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+            50% { transform: scale(1.15) rotate(0); }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+        .animate-success-check { animation: successCheck 0.6s ease-out both; }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-10px) rotate(0); opacity: 1; }
+            100% { transform: translateY(30px) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="font-body bg-gray-50 text-gray-800 antialiased">
+
+    <!-- SUCCESS CONTENT -->
+    <section class="min-h-[75vh] flex items-center justify-center py-16">
+        <div class="max-w-lg mx-auto px-4 text-center">
+            <div class="card-static p-8 md:p-10">
+                <!-- Success Icon -->
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-success-check">
+                    <i class="fas fa-check text-3xl text-green-600"></i>
+                </div>
+
+                <h1 class="font-heading text-2xl md:text-3xl font-bold text-gray-900 mb-3 animate-fade-in-up delay-200">
+                    Aduan Berhasil Dikirim!
+                </h1>
+                <p class="text-gray-500 mb-8 animate-fade-in-up delay-300">
+                    Terima kasih atas aduan Anda. Pengurus masjid akan segera menindaklanjutinya. Simpan kode tiket berikut untuk melacak status aduan Anda.
+                </p>
+
+                <!-- Ticket Code -->
+                <div class="animate-fade-in-up delay-400">
+                    <p class="text-sm text-gray-500 font-medium mb-2">Kode Tiket Anda:</p>
+                    <div class="ticket-code mx-auto w-fit">
+                        <span id="ticketCode">ADU-20260506-001</span>
+                        <button onclick="copyTicketCode('ADU-20260506-001')" class="text-primary-700 hover:text-primary-900 transition" title="Salin kode">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Info Note -->
+                <div class="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-lg text-left animate-fade-in-up delay-500">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-lightbulb text-amber-500 mt-0.5"></i>
+                        <div class="text-sm">
+                            <p class="font-semibold text-amber-800 mb-1">Penting!</p>
+                            <p class="text-amber-700">Simpan kode tiket ini dengan baik. Anda membutuhkannya untuk melacak status aduan kapan saja melalui halaman <strong>Lacak Aduan</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-in-up delay-600">
+                    <a href="lacak.html" class="btn btn-primary w-full sm:w-auto">
+                        <i class="fas fa-search"></i> Lacak Aduan
+                    </a>
+                    <a href="buat.html" class="btn btn-outline w-full sm:w-auto">
+                        <i class="fas fa-pen-to-square"></i> Kirim Lagi
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>
