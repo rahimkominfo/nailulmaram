@@ -32,6 +32,11 @@ $routes->get('aduan/berhasil', 'Aduan::berhasil');
 $routes->get('aduan/detail', 'Aduan::detail');
 $routes->get('aduan/lacak', 'Aduan::lacak');
 
+// Public Mobil Jenazah
+$routes->get('mobil-jenazah', 'MobilJenazah::index');
+$routes->post('mobil-jenazah/simpan', 'MobilJenazah::simpan');
+$routes->get('mobil-jenazah/berhasil', 'MobilJenazah::berhasil');
+
 // Admin Auth
 $routes->get('admin/login', 'Admin\Auth::login');
 $routes->post('admin/login/attempt', 'Admin\Auth::attemptLogin');
@@ -103,4 +108,12 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('aduan/detail/(:num)', 'Admin\Aduan::detail/$1');
     $routes->post('aduan/update-response', 'Admin\Aduan::updateResponse');
     $routes->post('aduan/forward', 'Admin\Aduan::forward');
+
+    // Modul Mobil Jenazah
+    $routes->get('mobil-jenazah', 'Admin\MobilJenazah::index');
+    $routes->get('mobil-jenazah/tambah', 'Admin\MobilJenazah::tambah');
+    $routes->post('mobil-jenazah/store', 'Admin\MobilJenazah::store');
+    $routes->get('mobil-jenazah/edit/(:num)', 'Admin\MobilJenazah::edit/$1');
+    $routes->post('mobil-jenazah/update/(:num)', 'Admin\MobilJenazah::update/$1');
+    $routes->get('mobil-jenazah/delete/(:num)', 'Admin\MobilJenazah::delete/$1');
 });

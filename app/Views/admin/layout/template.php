@@ -73,6 +73,10 @@
                         <i class="fas fa-bullhorn w-5"></i>
                         <span>Aduan</span>
                     </a>
+                    <a href="<?= base_url('admin/mobil-jenazah') ?>" class="flex items-center space-x-3 p-3 rounded-xl transition <?= (strpos(current_url(), base_url('admin/mobil-jenazah')) !== false) ? 'bg-green-700 font-bold' : 'hover:bg-green-800' ?>">
+                        <i class="fas fa-ambulance w-5"></i>
+                        <span>Mobil Jenazah</span>
+                    </a>
                     <?php endif; ?>
 
                     <?php if(session()->get('peran') === 'Admin'): ?>
