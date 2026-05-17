@@ -6,9 +6,48 @@
             <h2 class="text-2xl font-black text-gray-800 tracking-tighter uppercase mb-1">Layanan Mobil Jenazah</h2>
             <p class="text-gray-500 text-sm font-bold uppercase tracking-widest">Kelola riwayat dan laporan penggunaan mobil jenazah.</p>
         </div>
-        <a href="<?= base_url('admin/mobil-jenazah/tambah') ?>" class="inline-flex items-center px-6 py-4 bg-green-600 hover:bg-green-700 text-white font-black rounded-2xl shadow-lg shadow-green-200 transition duration-300 uppercase tracking-widest text-sm">
-            <i class="fas fa-plus mr-2"></i> Tambah Layanan
-        </a>
+        <div class="flex flex-wrap gap-3">
+            <a href="<?= base_url('admin/mobil-jenazah/export-pdf?tahun='.$filter['tahun'].'&bulan='.$filter['bulan']) ?>" target="_blank" class="inline-flex items-center px-6 py-4 bg-red-600 hover:bg-red-700 text-white font-black rounded-2xl shadow-lg shadow-red-100 transition duration-300 uppercase tracking-widest text-sm">
+                <i class="fas fa-file-pdf mr-2"></i> Export PDF
+            </a>
+            <a href="<?= base_url('admin/mobil-jenazah/tambah') ?>" class="inline-flex items-center px-6 py-4 bg-green-600 hover:bg-green-700 text-white font-black rounded-2xl shadow-lg shadow-green-200 transition duration-300 uppercase tracking-widest text-sm">
+                <i class="fas fa-plus mr-2"></i> Tambah Layanan
+            </a>
+        </div>
+    </div>
+
+    <!-- Filter Search -->
+    <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-6 mb-8">
+        <form action="<?= base_url('admin/mobil-jenazah') ?>" method="get" class="flex flex-col md:flex-row items-end gap-4">
+            <div class="w-full md:w-48">
+                <label for="tahun" class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 block">Pilih Tahun</label>
+                <select name="tahun" id="tahun" class="w-full bg-gray-50 border-none rounded-xl px-4 py-3 text-sm font-bold text-gray-700 focus:ring-2 focus:ring-green-500 transition">
+                    <option value="">Semua Tahun</option>
+                    <?php foreach($listTahun as $t): ?>
+                        <option value="<?= $t ?>" <?= $filter['tahun'] == $t ? 'selected' : '' ?>><?= $t ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="w-full md:w-48">
+                <label for="bulan" class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 block">Pilih Bulan</label>
+                <select name="bulan" id="bulan" class="w-full bg-gray-50 border-none rounded-xl px-4 py-3 text-sm font-bold text-gray-700 focus:ring-2 focus:ring-green-500 transition">
+                    <option value="">Semua Bulan</option>
+                    <?php foreach($listBulan as $b): ?>
+                        <option value="<?= $b['val'] ?>" <?= $filter['bulan'] == $b['val'] ? 'selected' : '' ?>><?= $b['nama'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="flex gap-2">
+                <button type="submit" class="px-6 py-3.5 bg-gray-800 hover:bg-gray-900 text-white font-black rounded-xl transition duration-300 uppercase tracking-widest text-[10px]">
+                    <i class="fas fa-search mr-2"></i> Cari
+                </button>
+                <?php if($filter['tahun'] != date('Y') || $filter['bulan'] != date('m')): ?>
+                    <a href="<?= base_url('admin/mobil-jenazah') ?>" class="px-6 py-3.5 bg-red-50 text-red-600 hover:bg-red-600 hover:text-white font-black rounded-xl transition duration-300 uppercase tracking-widest text-[10px]">
+                        <i class="fas fa-times mr-2"></i> Reset
+                    </a>
+                <?php endif; ?>
+            </div>
+        </form>
     </div>
 
     <?php if (session()->getFlashdata('success')) : ?>
@@ -66,10 +105,13 @@
                                 </td>
                                 <td class="px-8 py-5 text-center">
                                     <div class="flex items-center justify-center space-x-3">
-                                        <a href="<?= base_url('admin/mobil-jenazah/edit/'.$l['id']) ?>" class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-600 hover:text-white transition flex items-center justify-center shadow-sm">
+                                        <a href="<?= base_url('admin/mobil-jenazah/show/'.$l['mobil_jenazah_id']) ?>" class="w-10 h-10 bg-green-50 text-green-600 rounded-xl hover:bg-green-600 hover:text-white transition flex items-center justify-center shadow-sm">
+                                            <i class="fa-solid fa-circle-info"></i>
+                                        </a>
+                                        <a href="<?= base_url('admin/mobil-jenazah/edit/'.$l['mobil_jenazah_id']) ?>" class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-600 hover:text-white transition flex items-center justify-center shadow-sm">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="<?= base_url('admin/mobil-jenazah/delete/'.$l['id']) ?>" onclick="return confirm('Hapus data ini?')" class="w-10 h-10 bg-red-50 text-red-600 rounded-xl hover:bg-red-600 hover:text-white transition flex items-center justify-center shadow-sm">
+                                        <a href="<?= base_url('admin/mobil-jenazah/delete/'.$l['mobil_jenazah_id']) ?>" onclick="return confirm('Hapus data ini?')" class="w-10 h-10 bg-red-50 text-red-600 rounded-xl hover:bg-red-600 hover:text-white transition flex items-center justify-center shadow-sm">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </div>

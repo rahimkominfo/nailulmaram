@@ -4,17 +4,131 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\MobilJenazahModel;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class MobilJenazah extends BaseController
 {
     public function index()
     {
         $model = new MobilJenazahModel();
+        
+        // Ambil input dari query string
+        $tahun = $this->request->getGet('tahun');
+        $bulan = $this->request->getGet('bulan');
+
+        // Jika tidak ada parameter di URL (akses pertama kali atau reset), gunakan default sekarang
+        if ($this->request->getGet('tahun') === null && $this->request->getGet('bulan') === null) {
+            $tahun = date('Y');
+            $bulan = date('m');
+        }
+
+        $query = $model->orderBy('tanggal', 'DESC');
+
+        if ($tahun) {
+            $query->where('YEAR(tanggal)', $tahun);
+        }
+        if ($bulan) {
+            $query->where('MONTH(tanggal)', $bulan);
+        }
+
+        // Ambil daftar tahun yang tersedia di database
+        $db = \Config\Database::connect();
+        $listTahunResult = $db->table('mobil_jenazah')
+                        ->select('YEAR(tanggal) as tahun')
+                        ->distinct()
+                        ->orderBy('tahun', 'DESC')
+                        ->get()->getResultArray();
+        
+        // Pastikan tahun sekarang ada dalam list meskipun belum ada data di DB (agar bisa dipilih)
+        $listTahun = array_column($listTahunResult, 'tahun');
+        if (!in_array(date('Y'), $listTahun)) {
+            $listTahun[] = date('Y');
+            rsort($listTahun);
+        }
+        
+        $listBulan = [
+            ['val' => '01', 'nama' => 'Januari'],
+            ['val' => '02', 'nama' => 'Februari'],
+            ['val' => '03', 'nama' => 'Maret'],
+            ['val' => '04', 'nama' => 'April'],
+            ['val' => '05', 'nama' => 'Mei'],
+            ['val' => '06', 'nama' => 'Juni'],
+            ['val' => '07', 'nama' => 'Juli'],
+            ['val' => '08', 'nama' => 'Agustus'],
+            ['val' => '09', 'nama' => 'September'],
+            ['val' => '10', 'nama' => 'Oktober'],
+            ['val' => '11', 'nama' => 'November'],
+            ['val' => '12', 'nama' => 'Desember'],
+        ];
+
         $data = [
-            'title' => 'Layanan Mobil Jenazah',
-            'layanan' => $model->orderBy('tanggal', 'DESC')->findAll()
+            'title'     => 'Layanan Mobil Jenazah',
+            'layanan'   => $query->findAll(),
+            'filter'    => [
+                'tahun' => $tahun,
+                'bulan' => $bulan
+            ],
+            'listTahun' => $listTahun,
+            'listBulan' => $listBulan
         ];
         return view('admin/mobil_jenazah/index', $data);
+    }
+
+    public function exportPdf()
+    {
+        $model = new MobilJenazahModel();
+        
+        $tahun = $this->request->getGet('tahun');
+        $bulan = $this->request->getGet('bulan');
+
+        // Jika tidak ada parameter di URL (akses pertama kali atau reset), gunakan default sekarang
+        if ($tahun === null && $bulan === null) {
+            $tahun = date('Y');
+            $bulan = date('m');
+        }
+
+        $query = $model->orderBy('tanggal', 'ASC');
+
+        if ($tahun) {
+            $query->where('YEAR(tanggal)', $tahun);
+        }
+        if ($bulan) {
+            $query->where('MONTH(tanggal)', $bulan);
+        }
+
+        $listBulan = [
+            '01' => 'Januari', '02' => 'Februari', '03' => 'Maret', '04' => 'April',
+            '05' => 'Mei', '06' => 'Juni', '07' => 'Juli', '08' => 'Agustus',
+            '09' => 'September', '10' => 'Oktober', '11' => 'November', '12' => 'Desember',
+        ];
+
+        $data = [
+            'title'   => 'Laporan Layanan Mobil Jenazah',
+            'layanan' => $query->findAll(),
+            'filter'  => [
+                'tahun'      => $tahun,
+                'bulan'      => $bulan,
+                'nama_bulan' => $bulan ? $listBulan[$bulan] : 'Semua Bulan'
+            ]
+        ];
+
+        $html = view('admin/mobil_jenazah/pdf_report', $data);
+
+        // Dompdf configuration
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        
+        $filename = 'Laporan_Mobil_Jenazah_' . ($tahun ?: 'SemuaTahun') . '_' . ($bulan ?: 'SemuaBulan') . '.pdf';
+        
+        return $this->response->setHeader('Content-Type', 'application/pdf')
+                              ->setBody($dompdf->output());
     }
 
     public function tambah()
@@ -62,6 +176,22 @@ class MobilJenazah extends BaseController
         } else {
             return redirect()->back()->withInput()->with('error', 'Gagal menyimpan data.');
         }
+    }
+
+    public function show($id)
+    {
+        $model = new MobilJenazahModel();
+        $layanan = $model->find($id);
+
+        if (!$layanan) {
+            return redirect()->to('/admin/mobil-jenazah')->with('error', 'Data tidak ditemukan.');
+        }
+
+        $data = [
+            'title'   => 'Detail Layanan Mobil Jenazah',
+            'layanan' => $layanan
+        ];
+        return view('admin/mobil_jenazah/show', $data);
     }
 
     public function edit($id)

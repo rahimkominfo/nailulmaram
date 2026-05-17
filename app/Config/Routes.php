@@ -113,6 +113,8 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('mobil-jenazah', 'Admin\MobilJenazah::index');
     $routes->get('mobil-jenazah/tambah', 'Admin\MobilJenazah::tambah');
     $routes->post('mobil-jenazah/store', 'Admin\MobilJenazah::store');
+    $routes->get('mobil-jenazah/show/(:num)', 'Admin\MobilJenazah::show/$1');
+    $routes->get('mobil-jenazah/export-pdf', 'Admin\MobilJenazah::exportPdf');
     $routes->get('mobil-jenazah/edit/(:num)', 'Admin\MobilJenazah::edit/$1');
     $routes->post('mobil-jenazah/update/(:num)', 'Admin\MobilJenazah::update/$1');
     $routes->get('mobil-jenazah/delete/(:num)', 'Admin\MobilJenazah::delete/$1');

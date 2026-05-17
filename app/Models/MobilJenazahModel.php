@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class MobilJenazahModel extends Model
 {
     protected $table            = 'mobil_jenazah';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'mobil_jenazah_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;

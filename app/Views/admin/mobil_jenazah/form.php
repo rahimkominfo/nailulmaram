@@ -23,7 +23,7 @@
             </div>
         <?php endif ?>
 
-        <form action="<?= isset($layanan) ? base_url('admin/mobil-jenazah/update/'.$layanan['id']) : base_url('admin/mobil-jenazah/store') ?>" method="post">
+        <form action="<?= isset($layanan) ? base_url('admin/mobil-jenazah/update/'.$layanan['mobil_jenazah_id']) : base_url('admin/mobil-jenazah/store') ?>" method="post">
             <?= csrf_field() ?>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-6">
