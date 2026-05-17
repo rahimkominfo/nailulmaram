@@ -118,7 +118,8 @@
                 10 => ['H. BADRIS SALAM', 'MUSTAKIM', 'MUHAMMAD ALWI', 'IMAM NURSANI, SE', 'AGUNG AYU GITAH, S.Farm', 'FAIZAL AMIN', 'NURFIRAH KASIM'],
                 11 => ['H. FIRDAUS SYUAIB', 'AHRIANI AR.', 'NURJANNAH', 'DEDY MUH. ARHAM', 'MUNIR M. NUR', 'HASAN RAJA', 'MUCHDAR RAMADHAN'],
                 12 => ['ACHMAD FAUZAN GUNTUR, SE', 'ARDIANSYAH', 'SYUKRI', 'IPTU HERMAN SUDI', 'H. KARDIN', 'HJ. WARDA', 'FARIDA JOHANIS'],
-                13 => ['H. NASIR', 'TAKDIR RIDWAN','','','','',''],
+                13 => ['H. NASIR', 'TAKDIR ALI SYAHBANA RIDWAN','A. AMRAN NYONRI','M. TAHANG','MUH. HASYIM','MUKTADIR','HARLINAH ALWI'],
+                14 => ['HJ. RAHMATIAH RAZAK GANI', 'NURLAELI RAZAK GANI', '','','','','']
             ];
             ?>
 
