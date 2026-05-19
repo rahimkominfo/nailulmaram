@@ -148,7 +148,7 @@
         11 => ['H. Firdaus Syuaib', 'Ahriani AR.', 'Nurjannah', 'Dedy Muh. Arham', 'Munir M. Nur', 'Hasan Raja', 'Muchdar Ramadhan'],
         12 => ['Achmad Fauzan Guntur, SE', 'Ardiansyah', 'Syukri', 'Iptu Herman Sudi', 'H. Kardin', 'Hj. Warda', 'Farida Johanis'],
         13 => ['H. Nasir', 'Takdir Ali Syahbana Ridwan','A. Amran Nyonri','M. Tahang','Muh. Hasyim','Muktadir','Harlinah Alwi'],
-        14 => ['Hj. Rahmatiah Razak Gani', 'Nurlaeli Razak Gani']
+        14 => ['Hj. Rahmatiah Razak Gani', 'Nurlaeli Razak Gani','Muhammad Ardiansyah', 'Asdar', 'Albek', 'Aswar', 'Suriani']
     ];
 
     $running_text = "Daftar Nama-nama Peserta Qurban ";
