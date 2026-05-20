@@ -57,48 +57,49 @@
 <div class="qurban-body min-h-screen py-10 px-4 md:px-10">
     <div class="max-w-6xl mx-auto bg-black/20 p-4 rounded-xl backdrop-blur-sm mt-10">
         
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-2 relative">
-            
-            <div class="w-32 h-32 flex-shrink-0 bg-yellow-500 rounded-full border-4 border-white shadow-lg overflow-hidden flex items-center justify-center">
-                <img src="<?= base_url('images/logo_masjid.jpeg') ?>" alt="Logo Masjid" class="w-full h-full object-cover opacity-80 mix-blend-multiply">
-            </div>
-
-            <div class="flex-grow flex flex-col gap-2 w-full">
-                <div class="flex flex-col xl:flex-row gap-2">
-                    
-                    <div class="bg-qurban-white rounded-lg p-2 flex items-center gap-4 shadow-md flex-grow border-b-4 border-green-600">
-                        <img src="<?= base_url('images/barcode_daftar.png') ?>" alt="QR Code" class="w-16 h-16 border p-1">
-                        <div class="flex flex-col text-sm md:text-base text-gray-800 font-bold w-full">
-                            <div class="flex items-center gap-2 border-b border-gray-300 pb-1 mb-1">
-                                <i class="fab fa-whatsapp text-green-600 text-xl"></i>
-                                <span>CONTAK PERSON : 0823-9315-5711 (SANUSI MADYA MRZZ)</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <a href="https://s.id/FormulirPendaftaranQurban"><i class="fas fa-link text-blue-600"></i>
-                                <span>https://s.id/FormulirPendaftaranQurban</span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-qurban-white rounded-lg p-3 flex flex-col justify-center shadow-md border-b-4 border-blue-600 xl:w-1/3">
-                        <div class="flex items-center gap-2 text-blue-800 font-bold mb-1">
-                            <img src="<?= base_url('images/bri.png') ?>" alt="Logo BRI" class="h-5 object-contain">
-                            <span>BANK BRI</span>
-                        </div>
-                        <div class="text-sm md:text-base font-bold text-gray-800">
-                            NOMOR REKENING : 507001019944536
-                        </div>
-                    </div>
+        <div class="flex flex-col lg:flex-row items-stretch gap-4 mb-6">
+            <!-- Left Side: Logo and Title -->
+            <div class="flex flex-col md:flex-row items-center gap-6 bg-qurban-dark p-6 rounded-2xl border border-white/10 flex-grow shadow-2xl">
+                <div class="w-24 h-24 md:w-32 md:h-32 flex-shrink-0 bg-yellow-500 rounded-full border-4 border-white shadow-xl overflow-hidden flex items-center justify-center group">
+                    <img src="<?= base_url('images/logo_masjid.jpeg') ?>" alt="Logo Masjid" class="w-full h-full object-cover opacity-80 mix-blend-multiply group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="text-center md:text-left">
+                    <h1 class="text-2xl md:text-4xl font-black text-white tracking-tight uppercase leading-tight">
+                        Daftar Nama Peserta <br class="hidden md:block">
+                        <span class="text-yellow-400">Qurban 1447 H / 2026 M</span>
+                    </h1>
+                    <p class="text-white/40 text-xs md:text-sm font-bold tracking-[0.3em] uppercase mt-2">Masjid Jami Nailul Maram</p>
                 </div>
             </div>
-        </div>
 
-        <div class="flex flex-col md:flex-row justify-between items-stretch mb-8 mt-4 shadow-lg rounded-lg overflow-hidden border-2 border-white/50">
-            <div class="bg-qurban-dark text-white flex-grow flex items-center px-6 py-3">
-                <h1 class="text-2xl md:text-3xl font-bold tracking-wide uppercase">Daftar Nama - Nama Peserta Qurban</h1>
-            </div>
-            <div class="bg-qurban-red text-white px-8 py-3 flex items-center justify-center title-font">
-                <span class="text-3xl md:text-4xl font-bold tracking-wider">Rp. 2.600.000 / Orang</span>
+            <!-- Right Side: Contact and Action -->
+            <div class="flex flex-col sm:flex-row lg:flex-col gap-3 lg:w-80">
+                <!-- WhatsApp Contact -->
+                <div class="flex items-center gap-4 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 flex-1 hover:bg-white/15 transition-all">
+                    <div class="w-12 h-12 flex-shrink-0 bg-green-500/20 rounded-xl flex items-center justify-center shadow-inner">
+                        <i class="fab fa-whatsapp text-green-400 text-2xl"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <p class="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-1">Contact Person</p>
+                        <p class="text-sm font-extrabold text-white truncate">0823-9315-5711</p>
+                        <p class="text-[10px] text-white/70 font-medium truncate uppercase">Sanusi Madya MRZZ</p>
+                    </div>
+                </div>
+
+                <!-- Aduan Button -->
+                <div class="flex items-center gap-4 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 flex-1 hover:bg-white/15 transition-all">
+                    <div class="w-12 h-12 flex-shrink-0 bg-blue-500/20 rounded-xl flex items-center justify-center shadow-inner">
+                        <i class="fas fa-bullhorn text-blue-400 text-xl"></i>
+                    </div>
+                    <div class="flex-grow min-w-0">
+                        <p class="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-2">Layanan Aduan</p>
+                        <a href="<?= base_url('aduan/buat?tujuan=17') ?>" 
+                           class="flex items-center justify-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-gray-900 px-4 py-2 rounded-xl text-[11px] font-black transition-all shadow-lg uppercase active:scale-95 group">
+                            <span>Sampaikan Aduan</span>
+                            <i class="fas fa-chevron-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
