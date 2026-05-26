@@ -118,4 +118,9 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('mobil-jenazah/edit/(:num)', 'Admin\MobilJenazah::edit/$1');
     $routes->post('mobil-jenazah/update/(:num)', 'Admin\MobilJenazah::update/$1');
     $routes->get('mobil-jenazah/delete/(:num)', 'Admin\MobilJenazah::delete/$1');
+
+    // Modul Qurban
+    $routes->get('qurban', 'Admin\Qurban::index');
+    $routes->post('qurban/save', 'Admin\Qurban::save');
+    $routes->get('qurban/delete/(:num)', 'Admin\Qurban::delete/$1');
 });

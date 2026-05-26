@@ -77,6 +77,10 @@
                         <i class="fas fa-ambulance w-5"></i>
                         <span>Mobil Jenazah</span>
                     </a>
+                    <a href="<?= base_url('admin/qurban') ?>" class="flex items-center space-x-3 p-3 rounded-xl transition <?= (strpos(current_url(), base_url('admin/qurban')) !== false) ? 'bg-green-700 font-bold' : 'hover:bg-green-800' ?>">
+                        <i class="fas fa-cow w-5"></i>
+                        <span>Qurban</span>
+                    </a>
                     <?php endif; ?>
 
                     <?php if(session()->get('peran') === 'Admin'): ?>

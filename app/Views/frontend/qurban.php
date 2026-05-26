@@ -125,11 +125,16 @@
             ?>
 
             <?php foreach($kelompok as $no => $peserta): ?>
-            <div class="bg-white rounded-xl shadow-xl overflow-hidden border-2 border-gray-200">
-                <div class="bg-qurban-black text-white text-center py-2 text-2xl font-bold title-font tracking-wide">
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden border-2 border-gray-200 flex flex-col">
+                <div class="bg-qurban-black text-white text-center py-2 text-2xl font-bold title-font tracking-wide relative">
                     KELOMPOK <?= $no ?>
+                    <?php if(isset($qurbanTimes[$no])): ?>
+                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-gray-900 text-[10px] px-3 py-0.5 rounded-full font-black shadow-md border-2 border-qurban-black uppercase tracking-tighter whitespace-nowrap z-20 countdown-timer" data-time="<?= date('c', strtotime($qurbanTimes[$no])) ?>">
+                            Menghitung...
+                        </div>
+                    <?php endif; ?>
                 </div>
-                <div class="card-qurban-content h-64 cow-bg">
+                <div class="card-qurban-content flex-grow cow-bg pt-6">
                     <ul class="space-y-1 text-[15px] font-bold text-gray-900 relative z-10 leading-relaxed uppercase pl-2">
                         <?php foreach($peserta as $idx => $nama): ?>
                         <li><?= ($idx+1) ?>. <?= $nama ?></li>
@@ -142,4 +147,51 @@
         </div>
     </div>
 </div>
+<?= $this->endSection() ?>
+
+<?= $this->section('extra_js') ?>
+<script>
+    function updateCountdowns() {
+        const timers = document.querySelectorAll('.countdown-timer');
+        
+        timers.forEach(timer => {
+            const timeAttr = timer.getAttribute('data-time');
+            const targetTime = new Date(timeAttr).getTime();
+            const now = new Date().getTime();
+            const distance = targetTime - now;
+
+            if (isNaN(targetTime)) {
+                timer.innerHTML = "FORMAT WAKTU SALAH";
+                return;
+            }
+
+            if (distance < 0) {
+                timer.innerHTML = "PROSES PENYEMBELIHAN";
+                timer.classList.remove('bg-yellow-400', 'text-gray-900');
+                timer.classList.add('bg-green-600', 'text-white');
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            let display = "";
+            if (days > 0) display += days + "H ";
+            display += hours.toString().padStart(2, '0') + ":" + 
+                       minutes.toString().padStart(2, '0') + ":" + 
+                       seconds.toString().padStart(2, '0');
+            
+            timer.innerHTML = "WAKTU: " + display;
+        });
+    }
+
+    // Jalankan segera saat DOM siap
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCountdowns();
+        // Update setiap detik
+        setInterval(updateCountdowns, 1000);
+    });
+</script>
 <?= $this->endSection() ?>

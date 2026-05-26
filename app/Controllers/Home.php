@@ -8,6 +8,7 @@ use App\Models\GaleriModel;
 use App\Models\GaleriGambarModel;
 use App\Models\JadwalSholatCacheModel;
 use App\Models\FlayerModel;
+use App\Models\QurbanModel;
 
 class Home extends BaseController
 {
@@ -72,11 +73,19 @@ class Home extends BaseController
     public function qurban(): string
     {
         $profilModel = new ProfilMasjidModel();
-        $profil = $profilModel->first() ?: [];
+        $qurbanModel = new QurbanModel();
+        $profil = $profilModel->first();
+
+        // Fetch all qurban times and index them by kelompok
+        $qurbanData = $qurbanModel->findAll();
+        $qurbanTimes = [];
+        foreach ($qurbanData as $q) {
+            $qurbanTimes[$q['kelompok']] = $q['waktu_pemotongan'];
+        }
 
         return view('frontend/qurban', [
             'title'  => 'Daftar Peserta Qurban | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
-            'profil' => $profil
+            'qurbanTimes' => $qurbanTimes
         ]);
     }
 
