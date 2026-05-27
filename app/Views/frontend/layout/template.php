@@ -136,17 +136,17 @@
     <?php
     $kelompok = [
         1 => ['H. Muh. Sadar', 'Hj. Nikma', 'Nasrullah', 'Ratnawati', 'Rustan', 'Niar', 'Nurlaela'],
-        2 => ['Djubirusman Madya', 'Sanusi Madya Mrzz', 'Muh. Arsyad Madya', 'H. Basri Nurdin', 'Muh. Ishak Nurdin', 'Abd. Rasid', 'Tarmadi'],
-        3 => ['Zulfadli B', 'Haliq Abdul Walid BM', 'Nurtina', 'Sribulan', 'Muhammad Idris', 'Baharuddin', 'Hj. Farida'],
-        4 => ['Rosmawati Madya', 'H. Akbar', 'Affzaturrahman Akbar', 'Ilham Cokro', 'Muhdar', 'Syamsul Bahri', 'H. Safri'],
+        2 => ['Djubirusman Madya', 'Sanusi Madya Mrzz', 'Muh. Arsyad Madya', 'H. Basri Nurdin', 'Hj. Syamsiah Junaid', 'Muh. Ishak Basri', 'Abd. Rasyid'],
+        3 => ['Sulfadli B', 'Haliq Abdul Walid BM', 'Nurtina', 'Tarmadi', 'Sribulan', 'Muhammad Idris', 'Suhardi'],
+        4 => ['Rosmawati Madya', 'H. Akbar', 'Affzaturrahman Akbar', 'Ilham', 'Muhdar', 'Syamsul Bahri', 'H. Safri'],
         5 => ['H. Mappaselle', 'Muh. Amir', 'Hj. Maswiah', 'Sultan', 'Ratna HB', 'Abd. Muzakkir', 'Hj. Rohani'],
-        6 => ['Muh. Anis', 'Sudirman', 'Hj. Syamsiah Junaid', 'Muh. Arif', 'Nur Akhmad', 'H. Muh. Amir Siri', 'Munandar Muhti'],
-        7 => ['Maksum', 'Abd. Samad', 'Sukman', 'Fauziah Husain', 'Muh. Rezky Sakti Hidayat', 'Sabri Hidayat', 'Ambo Tang Rauf'],
-        8 => ['Munawirul Alma', 'Ridwan H. Junaid', 'Mustamin Bin Poto', 'Rahmatia H. P', 'Mappiare DG Maloga', 'Mustakim', 'Alimuddin Tahir'],
+        6 => ['Muh. Anis', 'Sudirman', 'Baharuddin', 'Muh. Arif', 'Nur Akhmad', 'H. Muh. Amir Siri', 'Munandar Muhti'],
+        7 => ['Maksum Ismail', 'Abd. Samad', 'Sukman', 'Fauziah Husain', 'Muh. Rezky Sakti Hidayat', 'Sabri Hidayat', 'Ambo Tang Rauf'],
+        8 => ['Munawirul Alma', 'Ridwan H. Junaid', 'Mustamin Bin Poto', 'Rahmatia H.P', 'Mappiare DG Maloga', 'Alimuddin Tahir', 'Sitti Nurul Hidayah Binti Muclis'],
         9 => ['Syamsuddin Daud', 'Hj. Farida', 'Amiluddin', 'H. Amiruddin Akil', 'Jamaluddin H. Kunnu', 'Hj. Harsa', 'Hj. Andi Nurmiah Tenro'],
-        10 => ['H. Badris Salam', 'Mustakim', 'Muhammad Alwi', 'Imam Nursani, SE', 'Agung Ayu Gitah, S.Farm', 'Faizal Amin', 'Nurfirah Kasim'],
+        10 => ['H. Badris Salam, SE', 'Mustakim', 'Muhammad Alwi', 'Imam Nursani, SE', 'Agung Ayu Gitah, S.Farm', 'Faizal Amin', 'Nurfirah Kasim'],
         11 => ['H. Firdaus Syuaib', 'Ahriani AR.', 'Nurjannah', 'Dedy Muh. Arham', 'Munir M. Nur', 'Hasan Raja', 'Muchdar Ramadhan'],
-        12 => ['Achmad Fauzan Guntur, SE', 'Ardiansyah', 'Syukri', 'Iptu Herman Sudi', 'H. Kardin', 'Hj. Warda', 'Farida Johanis'],
+        12 => ['Achmad Fauzan Guntur, SE', 'Ardiansyah', 'Syukri', 'Risnawati', 'H. Kardin', 'Hj. Warda', 'H. Abd. Kadir Hafid'],
         13 => ['H. Nasir', 'Takdir Ali Syahbana Ridwan','A. Amran Nyonri','M. Tahang','Muh. Hasyim','Muktadir','Harlinah Alwi'],
         14 => ['Hj. Rahmatiah Razak Gani', 'Nurlaeli Razak Gani','Muhammad Ardiansyah', 'Asdar', 'Albek', 'Aswar', 'Suriani']
     ];
