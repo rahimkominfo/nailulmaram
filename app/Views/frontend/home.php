@@ -294,7 +294,7 @@
             <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-green-50/50 group">
                 <iframe 
                     class="w-full h-full" 
-                    src="https://youtube.com/embed/H3tsqwsnqSo" 
+                    src="https://youtube.com/embed/GFMkCRUGt6A" 
                     title="YouTube video player" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
