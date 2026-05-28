@@ -63,14 +63,14 @@
             </div>
             
             <!-- Slide 4 -->
-            <!-- <div class="hero-slide absolute inset-0 transition-all duration-1000 ease-in-out opacity-0 z-0 pointer-events-none"> -->
+            <div class="hero-slide absolute inset-0 transition-all duration-1000 ease-in-out opacity-0 z-0 pointer-events-none">
                 <!-- Desktop Image -->
-                <!-- <img src="<?= base_url('images/banner_qurban_d.webp') ?>" 
-                     class="hidden md:block w-full h-full object-cover animate-kenburns"> -->
+                <img src="<?= base_url('images/panitia_qurban_d.webp') ?>" 
+                     class="hidden md:block w-full h-full object-cover animate-kenburns">
                 <!-- Mobile Image -->
-                <!-- <img src="<?= base_url('images/banner_qurban_m.webp') ?>" 
-                     class="block md:hidden w-full h-full object-cover animate-kenburns"> -->
-            <!-- </div> -->
+                <img src="<?= base_url('images/panitia_qurban_m.webp') ?>" 
+                     class="block md:hidden w-full h-full object-cover animate-kenburns">
+            </div>
         </div>
 
         <!-- Controls -->
@@ -86,7 +86,7 @@
             <button onclick="goToHero(0)" class="hero-indicator w-3 h-3 rounded-full bg-white transition-all duration-300 ring-4 ring-green-500/30"></button>
             <button onclick="goToHero(1)" class="hero-indicator w-3 h-3 rounded-full bg-white/40 hover:bg-white transition-all duration-300"></button>
             <button onclick="goToHero(2)" class="hero-indicator w-3 h-3 rounded-full bg-white/40 hover:bg-white transition-all duration-300"></button>
-            <!-- <button onclick="goToHero(3)" class="hero-indicator w-3 h-3 rounded-full bg-white/40 hover:bg-white transition-all duration-300"></button> -->
+            <button onclick="goToHero(3)" class="hero-indicator w-3 h-3 rounded-full bg-white/40 hover:bg-white transition-all duration-300"></button>
         </div>
     </section>
 
