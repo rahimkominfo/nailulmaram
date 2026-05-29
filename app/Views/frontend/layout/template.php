@@ -98,7 +98,7 @@
                 <a href="<?= base_url() ?>#jadwal" class="hover:text-green-600 transition">Jadwal Sholat</a>
                 <a href="<?= base_url('berita') ?>" class="hover:text-green-600 transition">Berita</a>
                 <a href="<?= base_url('quran') ?>" class="<?= (current_url() == base_url('quran')) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Al-Qur'an</a>
-                <a href="<?= base_url('qurban') ?>" class="<?= (current_url() == base_url('qurban')) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Qurban</a>
+                <!-- <a href="<?= base_url('qurban') ?>" class="<?= (current_url() == base_url('qurban')) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Qurban</a> -->
                 <a href="<?= base_url('galeri') ?>" class="hover:text-green-600 transition">Galeri</a>
                 <a href="<?= base_url('aduan') ?>" class="<?= (strpos(current_url(), base_url('aduan')) !== false) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Aduan</a>
                 <a href="#kontak" class="hover:text-green-600 transition">Kontak</a>
@@ -151,10 +151,10 @@
         14 => ['Hj. Rahmatiah Razak Gani', 'Nurlaeli Razak Gani','Muhammad Ardiansyah', 'Asdar', 'Albek', 'Aswar', 'Suriani']
     ];
 
-    $running_text = "Daftar Nama-nama Peserta Qurban ";
-    foreach ($kelompok as $no => $anggota) {
-        $running_text .= "<span class='font-bold text-green-700'>Kelompok $no:</span> " . implode(', ', $anggota) . " <span class='mx-4 text-gray-300'>|</span> ";
-    }
+    $running_text = "Alhamdulillah, Apresiasi yang tinggi atas pencapaian sukses dan lancar serta peningkatan hewan qurban tahun ini terhadap Pak Ketua Panitia dan Sekertaris, Bendahara serta seluruh jajaran Panitia Qurban Masjid Jami Nailul Maram, begitupula apresiasi yang tinggi terhadap Jamaah (Warga) dimanapun berada yang mempercayakan penyembelihan dan pendistribusian hewan qurbannya kepada Panitia Qurban Masjid Jami Nailul Maram, semoga kita semua dipanjangkan umur yang berkah oleh Allah SWT, sehingga kelak tahun depan kita semua dapat kembali berpartisipasi dalam hal tersebut, Salamakki Tafadasalama manekki Aamiin🤲🤲 🙏";
+    // foreach ($kelompok as $no => $anggota) {
+    //     $running_text .= "<span class='font-bold text-green-700'>Kelompok $no:</span> " . implode(', ', $anggota) . " <span class='mx-4 text-gray-300'>|</span> ";
+    // }
     // Duplicate for seamless loop
     $full_text = $running_text . $running_text;
     ?>
