@@ -70,8 +70,12 @@ class Home extends BaseController
         ]);
     }
 
-    public function qurban(): string
+    public function qurban()
     {
+        if (!session()->get('logged_in')) {
+            return redirect()->to('/');
+        }
+
         $profilModel = new ProfilMasjidModel();
         $qurbanModel = new QurbanModel();
         $profil = $profilModel->first();
