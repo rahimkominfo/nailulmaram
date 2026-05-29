@@ -286,24 +286,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Seksi Video YouTube -->
-    <section id="video-youtube1" class="py-12 container mx-auto px-6">
-        <div class="bg-white rounded-[40px] shadow-2xl p-4 md:p-8 border border-gray-100">
-            <h3 class="text-3xl font-bold text-gray-800 tracking-tight mb-8 border-l-8 border-green-600 pl-6 uppercase">Video Dokumentasi</h3>
-            <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-green-50/50 group">
-                <iframe 
-                    class="w-full h-full" 
-                    src="https://youtube.com/embed/rITN3eWU5Ho" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </section>
     
     <!-- Seksi Video YouTube -->
     <section id="video-youtube" class="py-12 container mx-auto px-6">
@@ -313,6 +295,17 @@
                 <iframe 
                     class="w-full h-full" 
                     src="https://youtube.com/embed/GFMkCRUGt6A" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-green-50/50 group">
+                <iframe 
+                    class="w-full h-full" 
+                    src="https://youtube.com/embed/rITN3eWU5Ho" 
                     title="YouTube video player" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
