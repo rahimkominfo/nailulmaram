@@ -30,7 +30,7 @@ class MobilJenazah extends BaseController
         // Validasi foto hanya jika ada file yang diunggah
         $fileFoto = $this->request->getFile('foto_dokumentasi');
         if ($fileFoto && $fileFoto->isValid()) {
-            $rules['foto_dokumentasi'] = 'max_size[foto_dokumentasi,2048]|is_image[foto_dokumentasi]';
+            $rules['foto_dokumentasi'] = 'max_size[foto_dokumentasi,8192]|is_image[foto_dokumentasi]';
         }
 
         if (!$this->validate($rules)) {
