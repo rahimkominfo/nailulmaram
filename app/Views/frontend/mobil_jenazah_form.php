@@ -107,9 +107,9 @@ function previewImage(input) {
     const container = document.getElementById('image_preview_container');
     const preview = document.getElementById('image_preview');
     if (input.files && input.files[0]) {
-        // Check file size (2MB = 2048 * 1024 bytes)
-        if (input.files[0].size > 2 * 1024 * 1024) {
-            alert('Ukuran foto terlalu besar. Maksimal 2MB.');
+        // Check file size (8MB = 8192 * 1024 bytes)
+        if (input.files[0].size > 8 * 1024 * 1024) {
+            alert('Ukuran foto terlalu besar. Maksimal 8MB.');
             input.value = '';
             container.classList.add('hidden');
             return;

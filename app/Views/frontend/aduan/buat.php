@@ -92,7 +92,7 @@
                         <div class="border-2 border-dashed border-gray-200 rounded-2xl p-8 text-center cursor-pointer hover:bg-emerald-50 hover:border-emerald-200 transition group" id="uploadZone">
                             <i class="fas fa-upload text-3xl text-gray-300 mb-3 group-hover:text-emerald-50 transition"></i>
                             <p class="text-sm text-gray-500">Seret file ke sini atau <span class="text-emerald-700 font-bold">klik untuk upload</span></p>
-                            <p class="text-xs text-gray-400 mt-1">Maks. 2MB — Format: JPG, PNG</p>
+                            <p class="text-xs text-gray-400 mt-1">Maks. 8MB — Format: JPG, PNG</p>
                         </div>
                         <input type="file" name="lampiran_file" id="fileInput" accept="image/jpeg,image/png" class="hidden">
                         <div class="error-msg text-red-500 text-xs mt-1" id="error-lampiran_file"></div>

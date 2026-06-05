@@ -53,7 +53,7 @@ class Aduan extends BaseController
             'judul_aduan'     => 'required|min_length[5]|max_length[255]',
             'isi_aduan'       => 'required|min_length[10]',
             'kontak_pengirim' => 'required|min_length[5]',
-            'lampiran_file'   => 'permit_empty|uploaded[lampiran_file]|max_size[lampiran_file,2048]|is_image[lampiran_file]|mime_in[lampiran_file,image/jpg,image/jpeg,image/png]',
+            'lampiran_file'   => 'permit_empty|uploaded[lampiran_file]|max_size[lampiran_file,8192]|is_image[lampiran_file]|mime_in[lampiran_file,image/jpg,image/jpeg,image/png]',
         ];
 
         // Jika tidak anonim, nama wajib diisi
