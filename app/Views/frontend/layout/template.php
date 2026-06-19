@@ -132,31 +132,24 @@
     </nav>
 
     <?php
-    $kelompok = [
-        1 => ['H. Muh. Sadar', 'Hj. Nikma', 'Nasrullah', 'Ratnawati', 'Rustan', 'Niar', 'Nurlaela'],
-        2 => ['Djubirusman Madya', 'Sanusi Madya Mrzz', 'Muh. Arsyad Madya', 'H. Basri Nurdin', 'Hj. Syamsiah Junaid', 'Muh. Ishak Basri', 'Abd. Rasyid'],
-        3 => ['Sulfadli B', 'Haliq Abdul Walid BM', 'Nurtina', 'Tarmadi', 'Sribulan', 'Muhammad Idris', 'Suhardi'],
-        4 => ['Rosmawati Madya', 'H. Akbar', 'Affzaturrahman Akbar', 'Ilham', 'Muhdar', 'Syamsul Bahri', 'H. Safri'],
-        5 => ['H. Mappaselle', 'Muh. Amir', 'Hj. Maswiah', 'Sultan', 'Ratna HB', 'Abd. Muzakkir', 'Hj. Rohani'],
-        6 => ['Muh. Anis', 'Sudirman', 'Baharuddin', 'Muh. Arif', 'Nur Akhmad', 'H. Muh. Amir Siri', 'Munandar Muhti'],
-        7 => ['Maksum Ismail', 'Abd. Samad', 'Sukman', 'Fauziah Husain', 'Muh. Rezky Sakti Hidayat', 'Sabri Hidayat', 'Ambo Tang Rauf'],
-        8 => ['Munawirul Alma', 'Ridwan H. Junaid', 'Mustamin Bin Poto', 'Rahmatia H.P', 'Mappiare DG Maloga', 'Alimuddin Tahir', 'Sitti Nurul Hidayah Binti Muclis'],
-        9 => ['Syamsuddin Daud', 'Hj. Farida', 'Amiluddin', 'H. Amiruddin Akil', 'Jamaluddin H. Kunnu', 'Hj. Harsa', 'Hj. Andi Nurmiah Tenro'],
-        10 => ['H. Badris Salam, SE', 'Mustakim', 'Muhammad Alwi', 'Imam Nursani, SE', 'Agung Ayu Gitah, S.Farm', 'Faizal Amin', 'Nurfirah Kasim'],
-        11 => ['H. Firdaus Syuaib', 'Ahriani AR.', 'Nurjannah', 'Dedy Muh. Arham', 'Munir M. Nur', 'Hasan Raja', 'Muchdar Ramadhan'],
-        12 => ['Achmad Fauzan Guntur, SE', 'Ardiansyah', 'Syukri', 'Risnawati', 'H. Kardin', 'Hj. Warda', 'H. Abd. Kadir Hafid'],
-        13 => ['H. Nasir', 'Takdir Ali Syahbana Ridwan','A. Amran Nyonri','M. Tahang','Muh. Hasyim','Muktadir','Harlinah Alwi'],
-        14 => ['Hj. Rahmatiah Razak Gani', 'Nurlaeli Razak Gani','Muhammad Ardiansyah', 'Asdar', 'Albek', 'Aswar', 'Suriani']
-    ];
-
-    $running_text = "Alhamdulillah, Apresiasi yang tinggi atas pencapaian sukses dan lancar serta peningkatan hewan qurban tahun ini terhadap Pak Ketua Panitia dan Sekertaris, Bendahara serta seluruh jajaran Panitia Qurban Masjid Jami Nailul Maram, begitupula apresiasi yang tinggi terhadap Jamaah (Warga) dimanapun berada yang mempercayakan penyembelihan dan pendistribusian hewan qurbannya kepada Panitia Qurban Masjid Jami Nailul Maram, semoga kita semua dipanjangkan umur yang berkah oleh Allah SWT, sehingga kelak tahun depan kita semua dapat kembali berpartisipasi dalam hal tersebut, Salamakki Tafadasalama manekki Aamiin🤲🤲 🙏";
-    // foreach ($kelompok as $no => $anggota) {
-    //     $running_text .= "<span class='font-bold text-green-700'>Kelompok $no:</span> " . implode(', ', $anggota) . " <span class='mx-4 text-gray-300'>|</span> ";
-    // }
-    // Duplicate for seamless loop
-    $full_text = $running_text . $running_text;
+    $runningTextModel = new \App\Models\RunningTextModel();
+    $activeTexts = $runningTextModel->where('status', 'Aktif')->orderBy('urutan', 'ASC')->findAll();
+    $running_text = "";
+    
+    if(!empty($activeTexts)) {
+        foreach($activeTexts as $rt) {
+            $teks = esc($rt['teks']);
+            if (!empty($rt['tautan'])) {
+                $teks = "<a href='" . esc($rt['tautan']) . "' target='_blank' class='hover:text-green-600 hover:underline transition-colors'>" . $teks . "</a>";
+            }
+            $running_text .= $teks . " <span class='mx-4 text-green-300'>•</span> ";
+        }
+        // Duplicate for seamless loop
+        $full_text = $running_text . $running_text;
+    }
     ?>
 
+    <?php if(!empty($running_text)): ?>
     <div class="bg-green-50 border-b border-green-100 overflow-hidden py-2">
         <div class="whitespace-nowrap animate-marquee inline-block">
             <span class="text-sm text-green-900 font-medium">
@@ -164,6 +157,7 @@
             </span>
         </div>
     </div>
+    <?php endif; ?>
 
     <?= $this->renderSection('content') ?>
 

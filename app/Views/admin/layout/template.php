@@ -69,6 +69,14 @@
                         <i class="fas fa-layer-group w-5"></i>
                         <span>Flayer Depan</span>
                     </a>
+                    <a href="<?= base_url('admin/video-dokumentasi') ?>" class="flex items-center space-x-3 p-3 rounded-xl transition <?= (strpos(current_url(), base_url('admin/video-dokumentasi')) !== false) ? 'bg-green-700 font-bold' : 'hover:bg-green-800' ?>">
+                        <i class="fab fa-youtube w-5"></i>
+                        <span>Video Dokumentasi</span>
+                    </a>
+                    <a href="<?= base_url('admin/running-text') ?>" class="flex items-center space-x-3 p-3 rounded-xl transition <?= (strpos(current_url(), base_url('admin/running-text')) !== false) ? 'bg-green-700 font-bold' : 'hover:bg-green-800' ?>">
+                        <i class="fas fa-text-width w-5"></i>
+                        <span>Running Text</span>
+                    </a>
                     <a href="<?= base_url('admin/aduan') ?>" class="flex items-center space-x-3 p-3 rounded-xl transition <?= (strpos(current_url(), base_url('admin/aduan')) !== false) ? 'bg-green-700 font-bold' : 'hover:bg-green-800' ?>">
                         <i class="fas fa-bullhorn w-5"></i>
                         <span>Aduan</span>

@@ -123,4 +123,20 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('qurban', 'Admin\Qurban::index');
     $routes->post('qurban/save', 'Admin\Qurban::save');
     $routes->get('qurban/delete/(:num)', 'Admin\Qurban::delete/$1');
+
+    // Modul Video Dokumentasi
+    $routes->get('video-dokumentasi', 'Admin\VideoDokumentasi::index');
+    $routes->get('video-dokumentasi/tambah', 'Admin\VideoDokumentasi::tambah');
+    $routes->post('video-dokumentasi/store', 'Admin\VideoDokumentasi::store');
+    $routes->get('video-dokumentasi/edit/(:num)', 'Admin\VideoDokumentasi::edit/$1');
+    $routes->post('video-dokumentasi/update/(:num)', 'Admin\VideoDokumentasi::update/$1');
+    $routes->get('video-dokumentasi/delete/(:num)', 'Admin\VideoDokumentasi::delete/$1');
+
+    // Modul Running Text
+    $routes->get('running-text', 'Admin\RunningText::index');
+    $routes->get('running-text/tambah', 'Admin\RunningText::tambah');
+    $routes->post('running-text/store', 'Admin\RunningText::store');
+    $routes->get('running-text/edit/(:num)', 'Admin\RunningText::edit/$1');
+    $routes->post('running-text/update/(:num)', 'Admin\RunningText::update/$1');
+    $routes->get('running-text/delete/(:num)', 'Admin\RunningText::delete/$1');
 });

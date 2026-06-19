@@ -58,6 +58,13 @@ class Home extends BaseController
                                ->orderBy('urutan', 'ASC')
                                ->findAll();
 
+        // Active Videos
+        $videoModel = new \App\Models\VideoDokumentasiModel();
+        $videos = $videoModel->where('status', 'Aktif')
+                             ->orderBy('urutan', 'ASC')
+                             ->orderBy('created_at', 'DESC')
+                             ->findAll();
+
         return view('frontend/home', [
             'title'         => 'Beranda | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
             'profil'        => $profil,
@@ -66,6 +73,7 @@ class Home extends BaseController
             'berita'        => $beritaTerbaru,
             'galeri'        => $galeriTerbaru,
             'flayers'       => $flayers,
+            'videos'        => $videos,
             'hijriah'       => $this->getHijriah($jadwalToday)
         ]);
     }
