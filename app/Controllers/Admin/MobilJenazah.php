@@ -88,7 +88,7 @@ class MobilJenazah extends BaseController
             $bulan = date('m');
         }
 
-        $query = $model->orderBy('tanggal', 'ASC');
+        $query = $model->orderBy('tanggal', 'DESC');
 
         if ($tahun) {
             $query->where('YEAR(tanggal)', $tahun);
