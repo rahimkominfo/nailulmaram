@@ -67,6 +67,7 @@ class Home extends BaseController
 
         return view('frontend/home', [
             'title'         => 'Beranda | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'masjid jami nailul maram', 'beranda', 'jadwal sholat', 'berita masjid', 'galeri kegiatan', 'video dakwah', 'qurban'],
             'profil'        => $profil,
             'jadwal'        => $jadwalToday,
             'jadwalBesok'   => $jadwalTomorrow,
@@ -96,8 +97,10 @@ class Home extends BaseController
         }
 
         return view('frontend/qurban', [
-            'title'  => 'Daftar Peserta Qurban | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
-            'qurbanTimes' => $qurbanTimes
+            'title'         => 'Daftar Peserta Qurban | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'peserta qurban nailul maram', 'jadwal pemotongan qurban', 'kurban nailul maram'],
+            'profil'        => $profil,
+            'qurbanTimes'   => $qurbanTimes
         ]);
     }
 

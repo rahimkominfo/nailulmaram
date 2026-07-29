@@ -52,15 +52,24 @@ class Berita extends BaseController
             }
         }
 
+        $keywords = ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'berita nailul maram', 'artikel islam nailul maram', 'kabar masjid nailul maram'];
+        if ($searchTerm) {
+            $keywords[] = strtolower($searchTerm);
+        }
+        if (isset($currentCat['nama'])) {
+            $keywords[] = strtolower($currentCat['nama']);
+        }
+
         $data = [
-            'title'      => 'Berita Masjid | Masjid Jami Nailul Maram',
-            'profil'     => $profilModel->first(),
-            'berita'     => $query->orderBy('artikel.tanggal_publikasi', 'DESC')
-                                 ->paginate(6),
-            'pager'      => $artikelModel->pager,
-            'categories' => $kategoriModel->findAll(),
-            'searchTerm' => $searchTerm,
-            'activeKat'  => $katSlug
+            'title'         => 'Berita & Artikel | Masjid Jami Nailul Maram',
+            'meta_keywords' => $keywords,
+            'profil'        => $profilModel->first(),
+            'berita'        => $query->orderBy('artikel.tanggal_publikasi', 'DESC')
+                                     ->paginate(6),
+            'pager'         => $artikelModel->pager,
+            'categories'    => $kategoriModel->findAll(),
+            'searchTerm'    => $searchTerm,
+            'activeKat'     => $katSlug
         ];
         return view('frontend/berita', $data);
     }
@@ -102,9 +111,15 @@ class Berita extends BaseController
                                          ->limit(5)
                                          ->findAll();
 
+        $bacaKeywords = ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', strtolower($artikel['judul'])];
+        if (!empty($artikel['nama_kategori'])) {
+            $bacaKeywords[] = strtolower($artikel['nama_kategori']);
+        }
+
         $data = [
-            'title'            => $artikel['judul'] . ' | Masjid Jami',
+            'title'            => $artikel['judul'] . ' | Masjid Jami Nailul Maram',
             'meta_description' => $artikel['abstrak'] ?? substr(strip_tags($artikel['konten']), 0, 160),
+            'meta_keywords'    => $bacaKeywords,
             'meta_image'       => $artikel['gambar_utama'] ? base_url('uploads/artikel/' . $artikel['gambar_utama']) : base_url('images/logo_masjid.jpeg'),
             'profil'           => $profilModel->first(),
             'artikel'          => $artikel,

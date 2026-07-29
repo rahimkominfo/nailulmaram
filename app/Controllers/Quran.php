@@ -27,8 +27,13 @@ class Quran extends BaseController
                            ->orderBy('nomor_ayat', 'ASC')
                            ->findAll();
 
+        $surahLatin = $currentSurah['nama_latin'] ?? '';
+        $surahArti  = $currentSurah['arti'] ?? '';
+
         return view('frontend/quran', [
-            'title'         => 'Al-Qur\'an Digital | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'title'         => 'Al-Qur\'an Digital - Surah ' . ($surahLatin ? $surahLatin : '1') . ' | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_description' => 'Al-Qur\'an Digital Online Masjid Jami Nailul Maram - Surah ' . $surahLatin . ' (' . $surahArti . ') lengkap dengan teks Arab dan terjemahan Indonesia.',
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'al quran nailul maram', 'quran digital nailul maram', strtolower($surahLatin), 'surah ' . strtolower($surahLatin), 'baca quran online'],
             'profil'        => $profil,
             'surahList'     => $surahList,
             'currentSurah'  => $currentSurah,

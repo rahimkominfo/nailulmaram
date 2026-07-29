@@ -378,7 +378,7 @@
                             $url = $video['url_youtube'];
                             preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i', $url, $matches);
                             $videoId = $matches[1] ?? '';
-                            $embedUrl = $videoId ? "https://www.youtube.com/embed/" . $videoId : $url;
+                            $embedUrl = $videoId ? "https://www.youtube-nocookie.com/embed/" . $videoId : str_replace('www.youtube.com', 'www.youtube-nocookie.com', $url);
                             ?>
                             <div class="flex-none w-full md:w-1/2 px-4">
                                 <div class="flex flex-col h-full">
@@ -387,7 +387,7 @@
                                         <iframe class="w-full h-full" src="<?= esc($embedUrl) ?>"
                                             title="<?= esc($video['judul']) ?>" frameborder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy">
                                         </iframe>
                                     </div>
                                     <h4 class="text-lg font-bold text-gray-800 text-center uppercase mb-4">

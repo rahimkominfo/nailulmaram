@@ -19,10 +19,11 @@ class Aduan extends BaseController
         $stats = $aduanModel->getStats();
 
         return view('frontend/aduan/index', [
-            'title'  => 'Sistem Aduan Jamaah | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
-            'profil' => $profil,
-            'tujuan' => $tujuan,
-            'stats'  => $stats
+            'title'         => 'Sistem Aduan Jamaah | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'aduan nailul maram', 'layanan aduan jamaah', 'pengaduan masjid'],
+            'profil'        => $profil,
+            'tujuan'        => $tujuan,
+            'stats'         => $stats
         ]);
     }
 
@@ -35,9 +36,10 @@ class Aduan extends BaseController
         $tujuan = $aduanTujuanModel->getWithPengurus();
 
         return view('frontend/aduan/buat', [
-            'title'  => 'Sampaikan Aduan | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
-            'profil' => $profil,
-            'tujuan' => $tujuan
+            'title'         => 'Sampaikan Aduan | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'sampaikan aduan nailul maram', 'form pengaduan jamaah', 'layanan nailul maram'],
+            'profil'        => $profil,
+            'tujuan'        => $tujuan
         ]);
     }
 
@@ -121,8 +123,9 @@ class Aduan extends BaseController
         $profil = $profilModel->first() ?: [];
 
         return view('frontend/aduan/berhasil', [
-            'title'  => 'Aduan Berhasil | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
-            'profil' => $profil
+            'title'         => 'Aduan Berhasil | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'aduan terkirim nailul maram'],
+            'profil'        => $profil
         ]);
     }
 
@@ -145,9 +148,10 @@ class Aduan extends BaseController
         }
 
         return view('frontend/aduan/detail', [
-            'title'  => 'Detail Aduan ' . $ticket . ' | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
-            'profil' => $profil,
-            'aduan'  => $aduan
+            'title'         => 'Detail Aduan ' . $ticket . ' | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'detail aduan nailul maram', 'tiket ' . $ticket],
+            'profil'        => $profil,
+            'aduan'         => $aduan
         ]);
     }
 
@@ -157,8 +161,9 @@ class Aduan extends BaseController
         $profil = $profilModel->first() ?: [];
 
         return view('frontend/aduan/lacak', [
-            'title'  => 'Lacak Aduan | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
-            'profil' => $profil
+            'title'         => 'Lacak Aduan | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'lacak aduan nailul maram', 'lacak tiket pengaduan'],
+            'profil'        => $profil
         ]);
     }
 }

@@ -12,8 +12,10 @@ class Profil extends BaseController
         $profil = $profilModel->first() ?: [];
 
         return view('frontend/profil', [
-            'title'  => 'Profil | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
-            'profil' => $profil
+            'title'         => 'Profil & Sejarah | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_description' => 'Profil dan Sejarah Singkat Masjid Jami Nailul Maram - Pusat Kegiatan Keagamaan dan Dakwah Jamaah',
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'profil nailul maram', 'sejarah nailul maram', 'visi misi nailul maram', 'profil masjid'],
+            'profil'        => $profil
         ]);
     }
 
@@ -30,9 +32,11 @@ class Profil extends BaseController
             ->findAll();
 
         return view('frontend/pengurus', [
-            'title'    => 'Pengurus | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
-            'profil'   => $profil,
-            'pengurus' => $pengurus
+            'title'         => 'Pengurus Masjid | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_description' => 'Struktur Pengurus & Takmir Masjid Jami Nailul Maram',
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'pengurus nailul maram', 'takmir nailul maram', 'pengurus masjid nailul maram', 'struktur pengurus'],
+            'profil'        => $profil,
+            'pengurus'      => $pengurus
         ]);
     }
 }

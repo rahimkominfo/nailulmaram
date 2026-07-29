@@ -12,8 +12,10 @@ class Cerita extends BaseController
         $profil = $profilModel->first() ?: [];
 
         return view('frontend/cerita-inspiratif', [
-            'title'  => 'Panglima Masjid: Langkah Cahaya Abduh | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
-            'profil' => $profil
+            'title'         => 'Panglima Masjid: Langkah Cahaya Abduh | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_description' => 'Cerita Inspiratif Panglima Masjid: Langkah Cahaya Abduh - Masjid Jami Nailul Maram',
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'panglima masjid nailul maram', 'langkah cahaya abduh', 'cerita inspiratif nailul maram'],
+            'profil'        => $profil
         ]);
     }
 }

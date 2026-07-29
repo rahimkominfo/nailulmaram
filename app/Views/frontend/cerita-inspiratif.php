@@ -3,8 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title><?= $title ?></title>
-    
+    <title><?= $title ?? 'Panglima Masjid: Langkah Cahaya Abduh | Masjid Jami Nailul Maram' ?></title>
+    <meta name="description" content="<?= $meta_description ?? 'Cerita Inspiratif Panglima Masjid: Langkah Cahaya Abduh - Masjid Jami Nailul Maram' ?>">
+    <?php
+        $default_keywords = ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'masjid jami nailul maram'];
+        $custom_keywords = ['panglima masjid', 'langkah cahaya abduh', 'cerita inspiratif', 'marbot masjid', 'kisah inspiratif nailul maram'];
+        if (!empty($meta_keywords)) {
+            $custom_keywords = array_merge($custom_keywords, is_array($meta_keywords) ? $meta_keywords : explode(',', $meta_keywords));
+        }
+        $all_keywords = array_unique(array_merge($default_keywords, $custom_keywords));
+        $meta_keywords_output = implode(', ', array_filter(array_map('trim', $all_keywords)));
+    ?>
+    <meta name="keywords" content="<?= esc($meta_keywords_output) ?>">
+    <meta property="og:title" content="<?= $title ?? 'Panglima Masjid: Langkah Cahaya Abduh | Masjid Jami Nailul Maram' ?>">
+    <meta property="og:description" content="Cerita Inspiratif Panglima Masjid: Langkah Cahaya Abduh - Masjid Jami Nailul Maram">
+    <meta property="og:image" content="<?= base_url('images/logo_masjid.jpeg') ?>">
+    <meta property="og:url" content="<?= current_url() ?>">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Panglima Masjid: Langkah Cahaya Abduh",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Masjid Jami Nailul Maram"
+      },
+      "keywords": "<?= esc($meta_keywords_output) ?>"
+    }
+    </script>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     

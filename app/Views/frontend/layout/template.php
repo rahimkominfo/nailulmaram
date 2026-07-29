@@ -3,20 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?? 'Masjid Jami - Website Resmi' ?></title>
+    <title><?= $title ?? 'Masjid Jami Nailul Maram - Website Resmi' ?></title>
+
+    <!-- Meta Tags for SEO (Google Search Keywords: Nailul & Maram) -->
+    <meta name="description" content="<?= $meta_description ?? 'Website Resmi Masjid Jami Nailul Maram - Pusat Dakwah & Pendidikan' ?>">
+    <?php
+        // Mandatory keywords for Google Search (nailul & maram)
+        $default_keywords = ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'masjid jami nailul maram'];
+        
+        $custom_keywords = [];
+        if (!empty($meta_keywords)) {
+            if (is_array($meta_keywords)) {
+                $custom_keywords = $meta_keywords;
+            } else {
+                $custom_keywords = explode(',', $meta_keywords);
+            }
+        }
+        
+        if (!empty($title)) {
+            $clean_title = strtolower(strip_tags($title));
+            $stop_words = ['|', '-', 'dan', 'yang', 'atau', 'pada', 'dari', 'untuk', 'dengan', 'di', 'ke', 'ini', 'itu', 'resmi', 'website', 'masjid', 'jami'];
+            $words = preg_split('/[\s,\-\|]+/', $clean_title);
+            foreach ($words as $w) {
+                $w = trim($w);
+                if (strlen($w) >= 3 && !in_array($w, $stop_words) && !in_array($w, $default_keywords)) {
+                    $custom_keywords[] = $w;
+                }
+            }
+        }
+        
+        $all_keywords = array_merge($default_keywords, $custom_keywords);
+        $unique_keywords = [];
+        foreach ($all_keywords as $kw) {
+            $kw = trim(mb_strtolower($kw));
+            if ($kw !== '' && !in_array($kw, $unique_keywords)) {
+                $unique_keywords[] = $kw;
+            }
+        }
+        $meta_keywords_output = implode(', ', $unique_keywords);
+    ?>
+    <meta name="keywords" content="<?= esc($meta_keywords_output) ?>">
 
     <!-- Meta Tags for Social Media (Open Graph & Twitter) -->
-    <meta name="description" content="<?= $meta_description ?? 'Website Resmi Masjid Jami Nailul Maram - Pusat Dakwah & Pendidikan' ?>">
-    <meta property="og:title" content="<?= $title ?? 'Masjid Jami - Website Resmi' ?>">
+    <meta property="og:title" content="<?= $title ?? 'Masjid Jami Nailul Maram - Website Resmi' ?>">
     <meta property="og:description" content="<?= $meta_description ?? 'Website Resmi Masjid Jami Nailul Maram - Pusat Dakwah & Pendidikan' ?>">
     <meta property="og:image" content="<?= $meta_image ?? base_url('images/logo_masjid.jpeg') ?>">
     <meta property="og:url" content="<?= current_url() ?>">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?= $title ?? 'Masjid Jami - Website Resmi' ?>">
+    <meta name="twitter:title" content="<?= $title ?? 'Masjid Jami Nailul Maram - Website Resmi' ?>">
     <meta name="twitter:description" content="<?= $meta_description ?? 'Website Resmi Masjid Jami Nailul Maram - Pusat Dakwah & Pendidikan' ?>">
     <meta name="twitter:image" content="<?= $meta_image ?? base_url('images/logo_masjid.jpeg') ?>">
+
+    <!-- JSON-LD Structured Data for Google Indexing -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Mosque",
+      "name": "Masjid Jami Nailul Maram",
+      "alternateName": ["Nailul Maram", "Masjid Nailul Maram", "Nailul", "Maram"],
+      "url": "<?= current_url() ?>",
+      "logo": "<?= base_url('images/logo_masjid.jpeg') ?>",
+      "description": "<?= esc($meta_description ?? 'Website Resmi Masjid Jami Nailul Maram - Pusat Dakwah & Pendidikan') ?>",
+      "keywords": "<?= esc($meta_keywords_output) ?>"
+    }
+    </script>
 
     <link rel="icon" type="image/jpeg" href="<?= base_url('images/logo_masjid.jpeg') ?>">
     <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">

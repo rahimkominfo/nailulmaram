@@ -4,13 +4,20 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\MobilJenazahModel;
+use App\Models\ProfilMasjidModel;
 
 class MobilJenazah extends BaseController
 {
     public function index()
     {
+        $profilModel = new ProfilMasjidModel();
+        $profil = $profilModel->first() ?: [];
+
         $data = [
-            'title' => 'Form Penggunaan Mobil Jenazah'
+            'title'         => 'Form Layanan Mobil Jenazah | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_description' => 'Layanan Mobil Jenazah Masjid Jami Nailul Maram - Pengantaran ke Pemakaman dan Pelayanan Kemanusiaan Jamaah',
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'mobil jenazah nailul maram', 'layanan ambulans nailul maram', 'layanan jenazah masjid'],
+            'profil'        => $profil
         ];
         return view('frontend/mobil_jenazah_form', $data);
     }
@@ -66,8 +73,13 @@ class MobilJenazah extends BaseController
 
     public function berhasil()
     {
+        $profilModel = new ProfilMasjidModel();
+        $profil = $profilModel->first() ?: [];
+
         $data = [
-            'title' => 'Laporan Berhasil Terkirim'
+            'title'         => 'Laporan Mobil Jenazah Berhasil | ' . ($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram'),
+            'meta_keywords' => ['nailul', 'maram', 'nailul maram', 'masjid nailul maram', 'mobil jenazah nailul maram'],
+            'profil'        => $profil
         ];
         return view('frontend/mobil_jenazah_berhasil', $data);
     }
