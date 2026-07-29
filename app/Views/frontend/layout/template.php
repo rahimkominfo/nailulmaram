@@ -138,7 +138,7 @@
             <div class="hidden md:flex space-x-8 font-semibold">
                 <a href="<?= base_url() ?>" class="<?= (current_url() == base_url() || current_url() == base_url().'/') ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Beranda</a>
                 <div class="relative">
-                    <button id="desktop-profil-toggle" class="flex items-center space-x-1 <?= (strpos(current_url(), base_url('profil')) !== false) ? 'text-green-600' : 'hover:text-green-600 transition' ?> focus:outline-none">
+                    <button id="desktop-profil-toggle" aria-label="Menu Dropdown Profil" class="flex items-center space-x-1 <?= (strpos(current_url(), base_url('profil')) !== false) ? 'text-green-600' : 'hover:text-green-600 transition' ?> focus:outline-none">
                         <span>Profil</span>
                         <i class="fas fa-chevron-down text-xs transition-transform duration-300" id="desktop-profil-icon"></i>
                     </button>
@@ -154,7 +154,7 @@
                 <a href="<?= base_url('aduan') ?>" class="<?= (strpos(current_url(), base_url('aduan')) !== false) ? 'text-green-600' : 'hover:text-green-600 transition' ?>">Aduan</a>
                 <a href="#kontak" class="hover:text-green-600 transition">Kontak</a>
             </div>
-            <button id="menu-toggle" class="md:hidden text-2xl text-gray-600 focus:outline-none transition-transform duration-300">
+            <button id="menu-toggle" aria-label="Buka Menu Navigasi Utama" class="md:hidden text-2xl text-gray-600 focus:outline-none transition-transform duration-300">
                 <i class="fas fa-bars" id="menu-icon"></i>
             </button>
         </div>
@@ -164,7 +164,7 @@
             <div class="px-6 py-4 flex flex-col space-y-4 font-semibold text-gray-700">
                 <a href="<?= base_url() ?>" class="hover:text-green-600 transition">Beranda</a>
                 <div>
-                    <button id="mobile-profil-toggle" class="flex items-center justify-between w-full hover:text-green-600 transition focus:outline-none">
+                    <button id="mobile-profil-toggle" aria-label="Submenu Profil" class="flex items-center justify-between w-full hover:text-green-600 transition focus:outline-none">
                         <span>Profil</span>
                         <i class="fas fa-chevron-down text-xs transition-transform duration-300" id="mobile-profil-icon"></i>
                     </button>
@@ -211,7 +211,9 @@
     </div>
     <?php endif; ?>
 
-    <?= $this->renderSection('content') ?>
+    <main id="main-content">
+        <?= $this->renderSection('content') ?>
+    </main>
 
     <footer id="kontak" class="bg-white pt-24 pb-12">
         <div class="container mx-auto px-6">
@@ -223,23 +225,23 @@
                         </div>
                         <span class="text-3xl font-black text-green-900 tracking-tighter"><?= strtoupper($profil['nama_masjid'] ?? 'MASJID JAMI') ?></span>
                     </div>
-                    <p class="text-gray-500 text-sm leading-relaxed italic font-light mb-8">
+                    <p class="text-gray-600 text-sm leading-relaxed italic font-light mb-8">
                         Menjadi wadah persatuan umat dan sumber ilmu syar'i yang berlandaskan Al-Qur'an dan Sunnah di wilayah Sulawesi Selatan.
                     </p>
                     <div class="flex space-x-4">
                         <?php if($profil['youtube'] ?? false): ?>
-                            <a href="<?= $profil['youtube'] ?>" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-red-600 hover:bg-red-600 hover:text-white transition shadow-sm"><i class="fab fa-youtube text-sm"></i></a>
+                            <a href="<?= $profil['youtube'] ?>" aria-label="YouTube Masjid Jami Nailul Maram" target="_blank" rel="noopener" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-red-600 hover:bg-red-600 hover:text-white transition shadow-sm"><i class="fab fa-youtube text-sm"></i></a>
                         <?php endif; ?>
                         <?php if($profil['instagram'] ?? false): ?>
-                            <a href="<?= $profil['instagram'] ?>" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-pink-600 hover:bg-pink-600 hover:text-white transition shadow-sm"><i class="fab fa-instagram text-sm"></i></a>
+                            <a href="<?= $profil['instagram'] ?>" aria-label="Instagram Masjid Jami Nailul Maram" target="_blank" rel="noopener" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-pink-600 hover:bg-pink-600 hover:text-white transition shadow-sm"><i class="fab fa-instagram text-sm"></i></a>
                         <?php endif; ?>
                         <?php if($profil['facebook'] ?? false): ?>
-                            <a href="<?= $profil['facebook'] ?>" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white transition shadow-sm"><i class="fab fa-facebook-f text-sm"></i></a>
+                            <a href="<?= $profil['facebook'] ?>" aria-label="Facebook Masjid Jami Nailul Maram" target="_blank" rel="noopener" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white transition shadow-sm"><i class="fab fa-facebook-f text-sm"></i></a>
                         <?php endif; ?>
                     </div>
                 </div>
                 <div>
-                    <h5 class="text-sm font-bold text-gray-800 mb-8 tracking-widest uppercase border-l-4 border-green-600 pl-4">Alamat & Kontak</h5>
+                    <h2 class="text-sm font-bold text-gray-800 mb-8 tracking-widest uppercase border-l-4 border-green-600 pl-4">Alamat & Kontak</h2>
                     <ul class="space-y-6">
                         <li class="flex items-start text-gray-600">
                             <i class="fas fa-map-marked-alt text-green-600 mt-1 mr-4 text-lg"></i>
@@ -254,27 +256,28 @@
                     </ul>
                 </div>
                 <div>
-                    <h5 class="text-sm font-bold text-gray-800 mb-8 tracking-widest uppercase border-l-4 border-green-600 pl-4">
+                    <h2 class="text-sm font-bold text-gray-800 mb-8 tracking-widest uppercase border-l-4 border-green-600 pl-4">
                         <i class="fas fa-chart-line mr-2"></i>Statistik Pengunjung
-                    </h5>
+                    </h2>
                     <?= view_cell('App\Cells\VisitorCell::render') ?>
-                </div>                <div>
-                    <h5 class="text-sm font-bold text-gray-800 mb-8 tracking-widest uppercase border-l-4 border-green-600 pl-4">Lokasi Masjid</h5>
+                </div>
+                <div>
+                    <h2 class="text-sm font-bold text-gray-800 mb-8 tracking-widest uppercase border-l-4 border-green-600 pl-4">Lokasi Masjid</h2>
                     <div class="rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.935523907869!2d120.26522747365276!3d-5.114094294862933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbc25e96830e7ed%3A0x96576e91d5c2cdad!2sMasjid%20Jami&#39;%20Nailul%20Maram%20Lappa!5e0!3m2!1sid!2sid!4v1772287149032!5m2!1sid!2sid" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe title="Peta Lokasi Masjid Jami Nailul Maram" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.935523907869!2d120.26522747365276!3d-5.114094294862933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbc25e96830e7ed%3A0x96576e91d5c2cdad!2sMasjid%20Jami&#39;%20Nailul%20Maram%20Lappa!5e0!3m2!1sid!2sid!4v1772287149032!5m2!1sid!2sid" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
-            <p class="text-center mt-12 text-gray-400 text-xs font-bold uppercase tracking-widest">&copy; <?= date('Y') ?> Masjid Jami Nailul Maram</p>
+            <p class="text-center mt-12 text-gray-500 text-xs font-bold uppercase tracking-widest">&copy; <?= date('Y') ?> Masjid Jami Nailul Maram</p>
         </div>
     </footer>
 
     <div id="galleryModal" class="fixed inset-0 z-[100] hidden bg-black/95 flex items-center justify-center p-6 backdrop-blur-md transition-all duration-500">
-        <button onclick="closeGallery()" class="absolute top-8 right-8 text-white text-5xl font-thin hover:text-green-500 transition-all">&times;</button>
-        <button onclick="prevSlide()" class="absolute left-6 top-1/2 -translate-y-1/2 text-white bg-white/10 w-16 h-16 rounded-full hover:bg-green-600 transition-all shadow-2xl"><i class="fas fa-chevron-left text-2xl"></i></button>
-        <button onclick="nextSlide()" class="absolute right-6 top-1/2 -translate-y-1/2 text-white bg-white/10 w-16 h-16 rounded-full hover:bg-green-600 transition-all shadow-2xl"><i class="fas fa-chevron-right text-2xl"></i></button>
+        <button onclick="closeGallery()" aria-label="Tutup Pratinjau Galeri" class="absolute top-8 right-8 text-white text-5xl font-thin hover:text-green-500 transition-all">&times;</button>
+        <button onclick="prevSlide()" aria-label="Foto Galeri Sebelumnya" class="absolute left-6 top-1/2 -translate-y-1/2 text-white bg-white/10 w-16 h-16 rounded-full hover:bg-green-600 transition-all shadow-2xl"><i class="fas fa-chevron-left text-2xl"></i></button>
+        <button onclick="nextSlide()" aria-label="Foto Galeri Selanjutnya" class="absolute right-6 top-1/2 -translate-y-1/2 text-white bg-white/10 w-16 h-16 rounded-full hover:bg-green-600 transition-all shadow-2xl"><i class="fas fa-chevron-right text-2xl"></i></button>
         <div class="max-w-6xl w-full flex flex-col items-center">
-            <h4 id="modalAlbumTitle" class="text-green-400 font-black uppercase tracking-widest text-xl mb-6 text-center"></h4>
+            <h3 id="modalAlbumTitle" class="text-green-400 font-black uppercase tracking-widest text-xl mb-6 text-center"></h3>
             <img id="modalImg" src="" alt="Pratinjau Foto Galeri" class="max-w-full max-h-[65vh] object-contain rounded-2xl shadow-2xl border-4 border-white/5 transition-all duration-500 shadow-green-900/20">
             <p id="modalCounter" class="text-gray-400 mt-10 text-xs font-bold tracking-[0.3em] uppercase"></p>
         </div>

@@ -6,7 +6,7 @@
     <div class="bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <nav class="flex items-center gap-2 text-sm text-gray-500">
-                <a href="<?= base_url('aduan') ?>" class="hover:text-emerald-700 transition"><i class="fas fa-home text-xs"></i></a>
+                <a href="<?= base_url('aduan') ?>" aria-label="Beranda Layanan Aduan" class="hover:text-emerald-700 transition"><i class="fas fa-home text-xs"></i></a>
                 <i class="fas fa-chevron-right text-[0.6rem] text-gray-300"></i>
                 <span class="text-gray-800 font-medium">Lacak Aduan</span>
             </nav>

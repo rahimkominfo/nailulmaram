@@ -156,11 +156,11 @@
                     <div class="flex flex-col">
                         <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Ukuran Huruf</label>
                         <div class="flex items-center bg-white border border-gray-200 rounded-xl p-1 shadow-sm">
-                            <button onclick="changeFontSize(-4)" class="w-10 h-10 flex items-center justify-center text-gray-500 hover:bg-green-50 hover:text-green-600 rounded-lg transition">
+                            <button onclick="changeFontSize(-4)" aria-label="Kecilkan Ukuran Huruf" class="w-10 h-10 flex items-center justify-center text-gray-500 hover:bg-green-50 hover:text-green-600 rounded-lg transition">
                                 <span class="text-xl font-bold">&minus;</span>
                             </button>
                             <span id="fontSizeDisplay" class="px-3 text-sm font-bold text-gray-700 select-none">100%</span>
-                            <button onclick="changeFontSize(4)" class="w-10 h-10 flex items-center justify-center text-gray-500 hover:bg-green-50 hover:text-green-600 rounded-lg transition">
+                            <button onclick="changeFontSize(4)" aria-label="Besarkan Ukuran Huruf" class="w-10 h-10 flex items-center justify-center text-gray-500 hover:bg-green-50 hover:text-green-600 rounded-lg transition">
                                 <i class="fas fa-plus text-lg"></i>
                             </button>
                         </div>

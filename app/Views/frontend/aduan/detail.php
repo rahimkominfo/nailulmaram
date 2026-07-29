@@ -26,7 +26,7 @@ $badge = getStatusBadge($aduan['status_aduan']);
     <div class="bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <nav class="flex items-center gap-2 text-sm text-gray-500">
-                <a href="<?= base_url('aduan') ?>" class="hover:text-emerald-700 transition"><i class="fas fa-home text-xs"></i></a>
+                <a href="<?= base_url('aduan') ?>" aria-label="Beranda Layanan Aduan" class="hover:text-emerald-700 transition"><i class="fas fa-home text-xs"></i></a>
                 <i class="fas fa-chevron-right text-[0.6rem] text-gray-300"></i>
                 <a href="<?= base_url('aduan/lacak') ?>" class="hover:text-emerald-700 transition">Lacak Aduan</a>
                 <i class="fas fa-chevron-right text-[0.6rem] text-gray-300"></i>
@@ -51,7 +51,7 @@ $badge = getStatusBadge($aduan['status_aduan']);
                             <span class="w-2 h-2 <?= $badge['dot'] ?> rounded-full <?= $aduan['status_aduan'] === 'Diproses' ? 'animate-pulse' : '' ?>"></span>
                             <?= $aduan['status_aduan'] ?>
                         </span>
-                        <button onclick="copyTicketCode('<?= $aduan['kode_tiket'] ?>')" class="p-2.5 text-emerald-700 border border-emerald-100 rounded-xl hover:bg-emerald-50 transition" title="Salin Kode">
+                        <button onclick="copyTicketCode('<?= $aduan['kode_tiket'] ?>')" aria-label="Salin Kode Tiket" class="p-2.5 text-emerald-700 border border-emerald-100 rounded-xl hover:bg-emerald-50 transition" title="Salin Kode">
                             <i class="fas fa-copy"></i>
                         </button>
                     </div>

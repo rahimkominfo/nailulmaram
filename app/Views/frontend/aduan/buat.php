@@ -6,7 +6,7 @@
     <div class="bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <nav class="flex items-center gap-2 text-sm text-gray-500">
-                <a href="<?= base_url('aduan') ?>" class="hover:text-primary-700 transition"><i class="fas fa-home text-xs"></i></a>
+                <a href="<?= base_url('aduan') ?>" aria-label="Beranda Layanan Aduan" class="hover:text-primary-700 transition"><i class="fas fa-home text-xs"></i></a>
                 <i class="fas fa-chevron-right text-[0.6rem] text-gray-300"></i>
                 <span class="text-gray-800 font-medium">Sampaikan Aduan</span>
             </nav>
@@ -184,7 +184,7 @@ function initFileUpload() {
               <p class="text-sm font-bold text-gray-800 truncate">${file.name}</p>
               <p class="text-xs text-gray-500">${(file.size / 1024).toFixed(1)} KB</p>
             </div>
-            <button type="button" onclick="clearUpload()" class="text-red-500 hover:text-red-700 p-2"><i class="fas fa-trash-alt"></i></button>
+            <button type="button" onclick="clearUpload()" aria-label="Hapus File Upload" class="text-red-500 hover:text-red-700 p-2"><i class="fas fa-trash-alt"></i></button>
           </div>
         `;
       };

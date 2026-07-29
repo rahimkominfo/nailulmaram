@@ -24,7 +24,7 @@
                     <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-3">Kode Tiket Anda</p>
                     <div class="flex items-center justify-center gap-3 bg-emerald-50 border-2 border-dashed border-emerald-200 py-4 px-6 rounded-xl w-fit mx-auto">
                         <span class="font-mono text-xl font-bold text-emerald-900 tracking-wider" id="ticketCode"><?= $kode_tiket ?></span>
-                        <button onclick="copyTicketCode('<?= $kode_tiket ?>')" class="text-emerald-600 hover:text-emerald-800 transition p-2" title="Salin kode">
+                        <button onclick="copyTicketCode('<?= $kode_tiket ?>')" aria-label="Salin Kode Tiket" class="text-emerald-600 hover:text-emerald-800 transition p-2" title="Salin kode">
                             <i class="fas fa-copy text-lg"></i>
                         </button>
                     </div>

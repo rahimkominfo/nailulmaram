@@ -81,22 +81,22 @@
     </div>
 
     <!-- Controls -->
-    <button onclick="prevHero()"
+    <button onclick="prevHero()" aria-label="Slide Banner Sebelumnya"
         class="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/20 hover:bg-black/50 text-white transition-all opacity-0 group-hover:opacity-100">
         <i class="fas fa-chevron-left text-2xl"></i>
     </button>
-    <button onclick="nextHero()"
+    <button onclick="nextHero()" aria-label="Slide Banner Selanjutnya"
         class="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/20 hover:bg-black/50 text-white transition-all opacity-0 group-hover:opacity-100">
         <i class="fas fa-chevron-right text-2xl"></i>
     </button>
 
     <!-- Indicators -->
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
-        <button onclick="goToHero(0)"
+        <button onclick="goToHero(0)" aria-label="Lihat Banner 1"
             class="hero-indicator w-3 h-3 rounded-full bg-white transition-all duration-300 ring-4 ring-green-500/30"></button>
-        <button onclick="goToHero(1)"
+        <button onclick="goToHero(1)" aria-label="Lihat Banner 2"
             class="hero-indicator w-3 h-3 rounded-full bg-white/40 hover:bg-white transition-all duration-300"></button>
-        <button onclick="goToHero(2)"
+        <button onclick="goToHero(2)" aria-label="Lihat Banner 3"
             class="hero-indicator w-3 h-3 rounded-full bg-white/40 hover:bg-white transition-all duration-300"></button>
         <!-- <button onclick="goToHero(3)" class="hero-indicator w-3 h-3 rounded-full bg-white/40 hover:bg-white transition-all duration-300"></button> -->
     </div>
@@ -178,15 +178,15 @@
 <!--Berita masjid-->
 <section id="berita" class="py-24 container mx-auto px-6">
     <div class="flex flex-col md:flex-row justify-between items-end md:items-center mb-10 gap-4">
-        <h3 class="text-4xl font-bold text-gray-800 tracking-tight border-l-8 border-green-600 pl-6 w-full md:w-auto">
-            Berita Terbaru</h3>
+        <h2 class="text-4xl font-bold text-gray-800 tracking-tight border-l-8 border-green-600 pl-6 w-full md:w-auto">
+            Berita Terbaru</h2>
 
         <div class="flex space-x-3">
-            <button onclick="changeNews(-1)"
+            <button onclick="changeNews(-1)" aria-label="Berita Sebelumnya"
                 class="w-12 h-12 bg-white border border-gray-200 shadow-sm hover:bg-green-600 hover:border-green-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 text-gray-600">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            <button onclick="changeNews(1)"
+            <button onclick="changeNews(1)" aria-label="Berita Selanjutnya"
                 class="w-12 h-12 bg-white border border-gray-200 shadow-sm hover:bg-green-600 hover:border-green-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 text-gray-600">
                 <i class="fas fa-chevron-right"></i>
             </button>
@@ -216,7 +216,7 @@
                                 <i class="far fa-calendar-alt mr-2 text-green-500"></i>
                                 <?= format_indo($b['tanggal_publikasi'], false, true) ?>
                             </div>
-                            <h4 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800 leading-tight"><?= $b['judul'] ?></h4>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800 leading-tight"><?= $b['judul'] ?></h3>
                             <p class="text-gray-500 text-base mb-8 line-clamp-3 font-light leading-relaxed"><?= $b['abstrak'] ?>
                             </p>
                             <a href="<?= base_url('berita/baca/' . $b['slug']) ?>"
@@ -245,20 +245,20 @@
     <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-between items-end md:items-center mb-12 gap-6">
             <div class="w-full md:w-auto">
-                <h3
+                <h2
                     class="text-4xl font-black text-gray-800 tracking-tighter border-l-8 border-orange-600 pl-6 uppercase italic">
-                    Informasi & <span class="text-orange-600 not-italic">Flayer</span></h3>
+                    Informasi & <span class="text-orange-600 not-italic">Flayer</span></h2>
                 <p class="text-gray-500 mt-3 pl-6 font-light max-w-xl">Ikuti terus pembaruan informasi, agenda kegiatan,
                     dan pengumuman penting melalui flayer resmi Masjid Jami Nailul Maram.</p>
             </div>
 
             <div class="flex space-x-3">
-                <button id="flayer-prev"
+                <button id="flayer-prev" aria-label="Flayer Sebelumnya"
                     class="w-14 h-14 bg-white border border-gray-200 shadow-sm hover:bg-orange-600 hover:border-orange-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-500 text-gray-600 group/btn">
                     <i
                         class="fas fa-chevron-left text-xl transform group-hover/btn:-translate-x-1 transition-transform"></i>
                 </button>
-                <button id="flayer-next"
+                <button id="flayer-next" aria-label="Flayer Selanjutnya"
                     class="w-14 h-14 bg-white border border-gray-200 shadow-sm hover:bg-orange-600 hover:border-orange-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-500 text-gray-600 group/btn">
                     <i
                         class="fas fa-chevron-right text-xl transform group-hover/btn:translate-x-1 transition-transform"></i>
@@ -308,8 +308,8 @@
 
 <section id="galeri" class="py-24 bg-gray-950 text-white overflow-hidden">
     <div class="container mx-auto px-6">
-        <h3 class="text-4xl font-bold tracking-tight mb-4 text-center text-green-400 uppercase">Dokumentasi Kegiatan
-        </h3>
+        <h2 class="text-4xl font-bold tracking-tight mb-4 text-center text-green-400 uppercase">Dokumentasi Kegiatan
+        </h2>
         <p class="text-center text-gray-400 font-light italic mb-16 max-w-2xl mx-auto">Klik pada album untuk melihat
             keseruan dan khidmatnya kegiatan di Masjid Jami.</p>
 
@@ -328,8 +328,8 @@
                             <span
                                 class="bg-green-600 w-fit text-xs px-4 py-1.5 rounded-full font-black mb-4 shadow-lg tracking-widest uppercase transform group-hover:scale-110 origin-left transition-transform duration-300">Lihat
                                 Koleksi</span>
-                            <h4 class="text-4xl font-black mb-2 leading-tight uppercase tracking-tighter"><?= $g['judul'] ?>
-                            </h4>
+                            <h3 class="text-4xl font-black mb-2 leading-tight uppercase tracking-tighter"><?= $g['judul'] ?>
+                            </h3>
                             <p
                                 class="text-green-300 font-light tracking-wide opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 italic flex items-center">
                                 <i class="fas fa-search-plus mr-2"></i> Ketuk untuk melihat
@@ -354,15 +354,15 @@
 <section id="video-youtube" class="py-12 container mx-auto px-6 overflow-hidden">
     <div class="bg-white rounded-[40px] shadow-2xl p-4 md:p-8 border border-gray-100">
         <div class="flex flex-col md:flex-row justify-between items-end md:items-center mb-8 gap-6">
-            <h3 class="text-3xl font-bold text-gray-800 tracking-tight border-l-8 border-green-600 pl-6 uppercase">Video
-                Dokumentasi</h3>
+            <h2 class="text-3xl font-bold text-gray-800 tracking-tight border-l-8 border-green-600 pl-6 uppercase">Video
+                Dokumentasi</h2>
             <div class="flex space-x-3">
-                <button id="video-prev"
+                <button id="video-prev" aria-label="Video Dokumentasi Sebelumnya"
                     class="w-12 h-12 bg-white border border-gray-200 shadow-sm hover:bg-green-600 hover:border-green-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 text-gray-600 group/btn">
                     <i
                         class="fas fa-chevron-left text-xl transform group-hover/btn:-translate-x-1 transition-transform"></i>
                 </button>
-                <button id="video-next"
+                <button id="video-next" aria-label="Video Dokumentasi Selanjutnya"
                     class="w-12 h-12 bg-white border border-gray-200 shadow-sm hover:bg-green-600 hover:border-green-600 hover:text-white rounded-full flex items-center justify-center transition-all duration-300 text-gray-600 group/btn">
                     <i
                         class="fas fa-chevron-right text-xl transform group-hover/btn:translate-x-1 transition-transform"></i>
@@ -395,8 +395,8 @@
                                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy">
                                         </iframe>
                                     </div>
-                                    <h4 class="text-lg font-bold text-gray-800 text-center uppercase mb-4">
-                                        <?= esc($video['judul']) ?></h4>
+                                    <h3 class="text-lg font-bold text-gray-800 text-center uppercase mb-4">
+                                        <?= esc($video['judul']) ?></h3>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -426,10 +426,10 @@
                     class="inline-flex items-center text-green-600 font-black text-xs uppercase tracking-[0.2em] mb-4 bg-white/80 px-4 py-2 rounded-full w-fit shadow-sm">
                     <i class="fas fa-star mr-2 text-yellow-500"></i> Rekomendasi Bacaan
                 </div>
-                <h3
+                <h2
                     class="text-3xl md:text-5xl font-black text-gray-800 tracking-tighter mb-6 leading-tight uppercase italic">
                     Kisah Nyata <br> <span class="text-green-600 not-italic">Inspiratif</span>
-                </h3>
+                </h2>
                 <p
                     class="text-gray-600 text-lg mb-10 leading-relaxed font-light border-l-4 border-green-500 pl-6 italic">
                     "Perjalanan spiritual yang menggugah jiwa, menceritakan pengabdian tulus yang menjadi teladan bagi
@@ -477,9 +477,9 @@
                 <!--<div class="inline-flex items-center text-green-600 font-black text-xs uppercase tracking-[0.2em] mb-4 bg-green-50 px-4 py-2 rounded-full w-fit shadow-sm">-->
                 <!--    <i class="fas fa-quran mr-2"></i> Program Literasi Quran-->
                 <!--</div>-->
-                <h3 class="text-3xl md:text-5xl font-black text-gray-800 tracking-tighter mb-6 leading-tight uppercase">
+                <h2 class="text-3xl md:text-5xl font-black text-gray-800 tracking-tighter mb-6 leading-tight uppercase">
                     Ayo <br> <span class="text-green-600">Baca Quran</span>
-                </h3>
+                </h2>
                 <p
                     class="text-gray-600 text-lg mb-10 leading-relaxed font-light border-l-4 border-green-500 pl-6 italic">
                     "Sebaik-baik kalian adalah orang yang belajar Al-Qur'an dan mengajarkannya." (HR. Bukhari)
@@ -707,6 +707,7 @@
             totalSlides = Math.ceil(slides.length / itemsPerView);
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('button');
+                dot.setAttribute('aria-label', 'Slide Flayer ' + (i + 1));
                 dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${i === 0 ? 'bg-orange-600 ring-4 ring-orange-200' : 'bg-gray-300 hover:bg-orange-400'}`;
                 dot.onclick = () => goToSlide(i);
                 indicatorContainer.appendChild(dot);
@@ -806,6 +807,7 @@
 
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('button');
+                dot.setAttribute('aria-label', 'Slide Video ' + (i + 1));
                 dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${i === 0 ? 'bg-green-600 ring-4 ring-green-200' : 'bg-gray-300 hover:bg-green-400'}`;
                 dot.onclick = () => goToSlide(i);
                 indicatorContainer.appendChild(dot);
