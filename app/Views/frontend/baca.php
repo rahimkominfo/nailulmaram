@@ -22,7 +22,7 @@
                             
                             <?php if($artikel['gambar_utama']): ?>
                                 <div class="rounded-[40px] overflow-hidden shadow-2xl mb-12">
-                                    <img src="<?= base_url('uploads/artikel/'.$artikel['gambar_utama']) ?>" class="w-full h-auto">
+                                    <img src="<?= base_url('uploads/artikel/'.$artikel['gambar_utama']) ?>" alt="<?= esc($artikel['judul']) ?>" class="w-full h-auto">
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -70,7 +70,7 @@
                                 <a href="<?= base_url('berita/baca/'.$bt['slug']) ?>" class="group block">
                                     <div class="flex gap-4">
                                         <div class="w-20 h-20 flex-shrink-0 rounded-2xl overflow-hidden bg-gray-200">
-                                            <img src="<?= $bt['gambar_utama'] ? base_url('uploads/artikel/'.$bt['gambar_utama']) : 'https://via.placeholder.com/150' ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                                            <img src="<?= $bt['gambar_utama'] ? base_url('uploads/artikel/'.$bt['gambar_utama']) : 'https://via.placeholder.com/150' ?>" alt="<?= esc($bt['judul']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                                         </div>
                                         <div class="flex-1">
                                             <p class="text-[10px] font-black text-green-600 uppercase tracking-widest mb-1"><?= $bt['nama_kategori'] ?? 'Berita' ?></p>

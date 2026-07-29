@@ -73,7 +73,7 @@
                             <label class="block text-gray-700 text-[10px] font-black mb-2 uppercase tracking-widest">Gambar Utama</label>
                             <div class="mt-2 flex flex-col items-center">
                                 <div id="previewContainer" class="hidden mb-4 w-full h-40 rounded-xl overflow-hidden border-2 border-dashed border-gray-200">
-                                    <img id="imagePreview" src="" class="w-full h-full object-cover">
+                                    <img id="imagePreview" src="" alt="Preview Gambar Utama Artikel" class="w-full h-full object-cover">
                                 </div>
                                 <label class="w-full flex flex-col items-center px-4 py-6 bg-white text-green-600 rounded-xl border border-gray-200 tracking-wide uppercase font-black cursor-pointer hover:bg-green-600 hover:text-white transition duration-300 text-[10px]">
                                     <i class="fas fa-cloud-upload-alt text-2xl mb-2"></i>

@@ -275,7 +275,7 @@
         <button onclick="nextSlide()" class="absolute right-6 top-1/2 -translate-y-1/2 text-white bg-white/10 w-16 h-16 rounded-full hover:bg-green-600 transition-all shadow-2xl"><i class="fas fa-chevron-right text-2xl"></i></button>
         <div class="max-w-6xl w-full flex flex-col items-center">
             <h4 id="modalAlbumTitle" class="text-green-400 font-black uppercase tracking-widest text-xl mb-6 text-center"></h4>
-            <img id="modalImg" src="" class="max-w-full max-h-[65vh] object-contain rounded-2xl shadow-2xl border-4 border-white/5 transition-all duration-500 shadow-green-900/20">
+            <img id="modalImg" src="" alt="Pratinjau Foto Galeri" class="max-w-full max-h-[65vh] object-contain rounded-2xl shadow-2xl border-4 border-white/5 transition-all duration-500 shadow-green-900/20">
             <p id="modalCounter" class="text-gray-400 mt-10 text-xs font-bold tracking-[0.3em] uppercase"></p>
         </div>
     </div>

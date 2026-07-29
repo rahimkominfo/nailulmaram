@@ -18,7 +18,7 @@
             <?php else: ?>
                 <?php foreach($gambar as $idx => $img): ?>
                     <div onclick="openLightbox(<?= $idx ?>)" class="cursor-pointer group relative h-72 rounded-[30px] overflow-hidden shadow-lg">
-                        <img src="<?= base_url('uploads/galeri/'.$img['gambar_url']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="<?= base_url('uploads/galeri/'.$img['gambar_url']) ?>" alt="<?= esc(!empty($img['caption']) ? $img['caption'] : $album['judul']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         <div class="absolute inset-0 bg-green-600/20 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                             <i class="fas fa-search-plus text-white text-3xl"></i>
                         </div>

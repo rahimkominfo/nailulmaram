@@ -179,7 +179,7 @@ function initFileUpload() {
       reader.onload = (e) => {
         preview.innerHTML = `
           <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100">
-            <img src="${e.target.result}" class="w-16 h-16 object-cover rounded-lg border border-white shadow-sm" />
+            <img src="${e.target.result}" alt="Preview Lampiran File" class="w-16 h-16 object-cover rounded-lg border border-white shadow-sm" />
             <div class="flex-1 min-width-0">
               <p class="text-sm font-bold text-gray-800 truncate">${file.name}</p>
               <p class="text-xs text-gray-500">${(file.size / 1024).toFixed(1)} KB</p>

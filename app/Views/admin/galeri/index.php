@@ -18,7 +18,7 @@
             <?php foreach($galeri as $g): ?>
                 <div class="bg-white rounded-[40px] shadow-sm border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
                     <div class="h-56 relative overflow-hidden">
-                        <img src="<?= base_url('uploads/galeri/'.$g['sampul_url']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="<?= base_url('uploads/galeri/'.$g['sampul_url']) ?>" alt="<?= esc($g['judul']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
                             <h4 class="text-white font-black uppercase tracking-tighter text-lg truncate w-full"><?= $g['judul'] ?></h4>
                         </div>

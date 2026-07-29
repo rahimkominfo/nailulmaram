@@ -42,7 +42,7 @@
                             <tr class="hover:bg-gray-50 transition border-b border-gray-50">
                                 <td class="px-8 py-4">
                                     <div class="w-20 h-14 rounded-xl overflow-hidden shadow-sm border border-gray-100">
-                                        <img src="<?= $a['gambar_utama'] ? base_url('uploads/artikel/'.$a['gambar_utama']) : 'https://via.placeholder.com/200x150?text=No+Image' ?>" class="w-full h-full object-cover">
+                                        <img src="<?= $a['gambar_utama'] ? base_url('uploads/artikel/'.$a['gambar_utama']) : 'https://via.placeholder.com/200x150?text=No+Image' ?>" alt="<?= esc($a['judul']) ?>" class="w-full h-full object-cover">
                                     </div>
                                 </td>
                                 <td class="px-8 py-4 text-gray-800 uppercase tracking-tighter max-w-xs truncate">

@@ -15,7 +15,7 @@
             <?php else: ?>
                 <?php foreach($galeri as $g): ?>
                     <div onclick="openGalleryAlbum(<?= $g['galeri_id'] ?>)" class="group relative h-[450px] rounded-[40px] overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer">
-                        <img src="<?= base_url('uploads/galeri/'.$g['sampul_url']) ?>" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125">
+                        <img src="<?= base_url('uploads/galeri/'.$g['sampul_url']) ?>" alt="<?= esc($g['judul']) ?>" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-12 flex flex-col justify-end group-hover:via-black/60 transition-colors duration-500">
                             <span class="bg-green-600 w-fit text-xs px-4 py-1.5 rounded-full font-black mb-4 shadow-lg tracking-widest uppercase">Lihat Koleksi</span>
                             <h4 class="text-3xl font-black mb-2 leading-tight text-white uppercase tracking-tighter"><?= $g['judul'] ?></h4>

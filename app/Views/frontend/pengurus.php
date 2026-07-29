@@ -73,7 +73,7 @@
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-amber-700 font-bold flex-shrink-0 overflow-hidden">
                     <?php if($p['foto']): ?>
-                      <img src="<?= $p['foto'] ?>" class="w-full h-full object-cover">
+                      <img src="<?= $p['foto'] ?>" alt="Foto <?= esc($p['nama']) ?>" class="w-full h-full object-cover">
                     <?php else: ?>
                       <?= substr($p['nama'], 0, 1) ?>
                     <?php endif; ?>
@@ -104,7 +104,7 @@
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-amber-700 font-bold flex-shrink-0 overflow-hidden">
                     <?php if($p['foto']): ?>
-                      <img src="<?= $p['foto'] ?>" class="w-full h-full object-cover">
+                      <img src="<?= $p['foto'] ?>" alt="Foto <?= esc($p['nama']) ?>" class="w-full h-full object-cover">
                     <?php else: ?>
                       <?= substr($p['nama'], 0, 1) ?>
                     <?php endif; ?>
@@ -134,7 +134,7 @@
                 <?php foreach ($harian as $p): ?>
                 <div class="flex items-center gap-4">
                   <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold overflow-hidden flex-shrink-0">
-                    <img src="<?= $p['foto'] ?: 'https://lh3.googleusercontent.com/a/default-user' ?>" class="w-full h-full object-cover" />
+                    <img src="<?= $p['foto'] ?: 'https://lh3.googleusercontent.com/a/default-user' ?>" alt="Foto <?= esc($p['nama']) ?>" class="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h3 class="font-bold text-gray-900 text-sm leading-tight"><?= $p['nama'] ?></h3>
@@ -187,7 +187,7 @@
                   <?php foreach ($members as $p): ?>
                   <div class="flex items-center gap-3">
                     <div class="w-12 h-12 rounded-full bg-gray-100 flex-shrink-0 overflow-hidden">
-                      <img src="<?= $p['foto'] ?: 'https://lh3.googleusercontent.com/a/default-user' ?>" class="w-full h-full object-cover">
+                      <img src="<?= $p['foto'] ?: 'https://lh3.googleusercontent.com/a/default-user' ?>" alt="Foto <?= esc($p['nama']) ?>" class="w-full h-full object-cover">
                     </div>
                     <div class="overflow-hidden">
                       <p class="text-sm font-bold text-gray-800 leading-tight"><?= $p['nama'] ?></p>

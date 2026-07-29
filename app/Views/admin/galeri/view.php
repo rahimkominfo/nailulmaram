@@ -24,7 +24,7 @@
             <?php foreach($gambar as $img): ?>
                 <div class="bg-white p-4 rounded-3xl shadow-sm border border-gray-100 group relative overflow-hidden">
                     <div class="h-40 rounded-2xl overflow-hidden mb-4">
-                        <img src="<?= base_url('uploads/galeri/'.$img['gambar_url']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="<?= base_url('uploads/galeri/'.$img['gambar_url']) ?>" alt="<?= esc(!empty($img['caption']) ? $img['caption'] : $galeri['judul']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest truncate mr-2"><?= $img['caption'] ?: 'Tanpa Caption' ?></p>

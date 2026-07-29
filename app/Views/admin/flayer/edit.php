@@ -46,7 +46,7 @@
                             <input class="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition duration-300 font-bold mb-4" id="gambar_url" name="gambar_url" type="url" placeholder="https://example.com/image.jpg" value="<?= old('gambar_url', $flayer['gambar_url']) ?>" oninput="updatePreview(this.value)" required>
                             
                             <div id="previewContainer" class="w-full aspect-video rounded-2xl overflow-hidden border-2 border-dashed border-gray-200 shadow-inner bg-gray-50">
-                                <img id="imagePreview" src="<?= $flayer['gambar_url'] ?>" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400?text=Invalid+URL'">
+                                <img id="imagePreview" src="<?= $flayer['gambar_url'] ?>" alt="Preview Flayer" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400?text=Invalid+URL'">
                             </div>
                             <p class="text-[10px] text-gray-400 mt-2 font-bold italic text-center">Preview akan terupdate otomatis saat URL dimasukkan.</p>
                         </div>

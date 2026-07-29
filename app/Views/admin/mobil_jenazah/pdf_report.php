@@ -137,7 +137,7 @@
             <td class="header-logo">
                 <?php $logo = base64_img('images/logo_masjid.jpeg'); ?>
                 <?php if ($logo): ?>
-                    <img src="<?= $logo ?>" style="width: 80px; height: 80px;">
+                    <img src="<?= $logo ?>" alt="Logo Masjid Jami Nailul Maram" style="width: 80px; height: 80px;">
                 <?php endif; ?>
             </td>
             <td class="header-text">
@@ -171,7 +171,7 @@
                 <?php if ($l['foto_dokumentasi']): ?>
                     <?php $foto = base64_img($l['foto_dokumentasi'], 'uploads/mobil_jenazah'); ?>
                     <?php if ($foto): ?>
-                        <img src="<?= $foto ?>" class="documentation-img">
+                        <img src="<?= $foto ?>" alt="Foto Dokumentasi Layanan Mobil Jenazah" class="documentation-img">
                     <?php endif; ?>
                 <?php endif; ?>
 

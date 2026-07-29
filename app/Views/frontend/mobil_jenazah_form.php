@@ -72,7 +72,7 @@
                         
                         <div id="image_preview_container" class="mt-6 hidden">
                             <div class="relative inline-block w-full">
-                                <img id="image_preview" class="w-full h-64 object-cover rounded-3xl border-4 border-green-500 shadow-lg">
+                                <img id="image_preview" alt="Preview Foto Dokumentasi Mobil Jenazah" class="w-full h-64 object-cover rounded-3xl border-4 border-green-500 shadow-lg">
                                 <div class="absolute top-4 right-4 bg-green-600 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-md">
                                     <i class="fas fa-check-circle mr-1"></i> Foto Siap
                                 </div>

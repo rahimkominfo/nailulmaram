@@ -29,7 +29,7 @@
                         <label class="block text-gray-700 text-xs font-black mb-2 uppercase tracking-widest">Foto Sampul</label>
                         <div class="mt-2 flex flex-col items-center">
                             <div id="previewContainer" class="hidden mb-4 w-full h-56 rounded-3xl overflow-hidden border-2 border-dashed border-gray-200">
-                                <img id="imagePreview" src="" class="w-full h-full object-cover">
+                                <img id="imagePreview" src="" alt="Preview Sampul Galeri" class="w-full h-full object-cover">
                             </div>
                             <label class="w-full flex flex-col items-center px-4 py-8 bg-white text-green-600 rounded-2xl border-2 border-dashed border-gray-200 tracking-wide uppercase font-black cursor-pointer hover:bg-green-600 hover:text-white transition duration-300">
                                 <i class="fas fa-camera text-3xl mb-2"></i>

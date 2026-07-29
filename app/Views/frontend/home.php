@@ -17,6 +17,7 @@
         <!-- Slide 1 -->
         <div class="hero-slide absolute inset-0 transition-all duration-1000 ease-in-out opacity-100 z-10">
             <img src="<?= base_url('images/background1.jpeg') ?>"
+                alt="Selamat Datang di <?= esc($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram') ?>"
                 class="w-full h-full object-cover animate-kenburns opacity-60">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
             <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
@@ -36,6 +37,7 @@
         <div
             class="hero-slide absolute inset-0 transition-all duration-1000 ease-in-out opacity-0 z-0 pointer-events-none">
             <img src="<?= base_url('images/background2.jpeg') ?>"
+                alt="Pusat Dakwah dan Pendidikan <?= esc($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram') ?>"
                 class="w-full h-full object-cover animate-kenburns opacity-60">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
             <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
@@ -53,6 +55,7 @@
         <div
             class="hero-slide absolute inset-0 transition-all duration-1000 ease-in-out opacity-0 z-0 pointer-events-none">
             <img src="<?= base_url('images/background3.jpeg') ?>"
+                alt="Kebersamaan dalam Ibadah <?= esc($profil['nama_masjid'] ?? 'Masjid Jami Nailul Maram') ?>"
                 class="w-full h-full object-cover animate-kenburns opacity-60">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
             <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
@@ -202,6 +205,7 @@
                     <div class="flex flex-col md:flex-row h-full">
                         <div class="w-full md:w-1/2 h-56 md:h-full relative overflow-hidden">
                             <img src="<?= $b['gambar_utama'] ? base_url('uploads/artikel/' . $b['gambar_utama']) : 'https://images.pexels.com/photos/8164567/pexels-photo-8164567.jpeg?auto=compress&cs=tinysrgb&w=800' ?>"
+                                alt="<?= esc($b['judul']) ?>"
                                 class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
                             <div
                                 class="absolute top-6 left-6 bg-green-600 text-white text-[10px] px-3 py-1 rounded-full uppercase font-bold shadow-xl">
@@ -317,6 +321,7 @@
                     <div onclick="openGalleryAlbum(<?= $g['galeri_id'] ?>)"
                         class="group relative h-[450px] rounded-[40px] overflow-hidden cursor-pointer shadow-2xl animate-fade-in-up <?= $idx === 1 ? 'delay-300' : 'delay-100' ?> transform hover:-translate-y-2 transition-all duration-500 hover:shadow-green-900/50">
                         <img src="<?= base_url('uploads/galeri/' . $g['sampul_url']) ?>"
+                            alt="<?= esc($g['judul']) ?>"
                             class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-12 flex flex-col justify-end group-hover:via-black/60 transition-colors duration-500">

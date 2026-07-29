@@ -106,7 +106,7 @@ $badge = getStatusBadge($aduan['status_aduan']);
                         <p class="text-[10px] text-gray-400 font-black uppercase tracking-[0.2em] mb-3">Lampiran</p>
                         <a href="<?= base_url('uploads/aduan/' . $aduan['lampiran_file']) ?>" target="_blank" class="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-100 w-fit hover:border-emerald-200 transition group cursor-pointer">
                             <div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
-                                <img src="<?= base_url('uploads/aduan/' . $aduan['lampiran_file']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <img src="<?= base_url('uploads/aduan/' . $aduan['lampiran_file']) ?>" alt="Lampiran Aduan <?= esc($aduan['judul_aduan']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                 <i class="fas fa-image text-gray-300 text-2xl hidden"></i>
                             </div>
                             <div>

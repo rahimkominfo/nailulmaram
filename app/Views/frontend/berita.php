@@ -51,7 +51,7 @@
             <?php foreach($berita as $b): ?>
                 <a href="<?= base_url('berita/baca/'.$b['slug']) ?>" class="group block bg-white rounded-[40px] shadow-sm border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500">
                     <div class="h-64 relative overflow-hidden">
-                        <img src="<?= $b['gambar_utama'] ? base_url('uploads/artikel/'.$b['gambar_utama']) : 'https://images.pexels.com/photos/8164567/pexels-photo-8164567.jpeg?auto=compress&cs=tinysrgb&w=800' ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <img src="<?= $b['gambar_utama'] ? base_url('uploads/artikel/'.$b['gambar_utama']) : 'https://images.pexels.com/photos/8164567/pexels-photo-8164567.jpeg?auto=compress&cs=tinysrgb&w=800' ?>" alt="<?= esc($b['judul']) ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         <?php if($b['nama_kategori']): ?>
                             <div class="absolute top-6 left-6">
                                 <span class="bg-green-600 text-white px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">

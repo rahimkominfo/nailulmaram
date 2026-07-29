@@ -135,7 +135,7 @@
     <!-- Scene 3: Ujian Berat (Dark Mode Section) -->
     <section class="bg-slate-900 text-gray-300 py-24 px-6 relative overflow-hidden">
         <div class="absolute inset-0 z-0 opacity-20">
-             <img src="<?= base_url('images/panglima_masjid/4.png') ?>" class="w-full h-full object-cover">
+             <img src="<?= base_url('images/panglima_masjid/4.png') ?>" alt="Ilustrasi Ujian Berat" class="w-full h-full object-cover">
         </div>
         <div class="max-w-3xl mx-auto relative z-10" data-aos="fade-up" data-aos-duration="1200">
             <i class="fas fa-hospital-user text-4xl text-red-400 mb-8 opacity-80"></i>
